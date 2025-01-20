@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
               return GestureDetector(
                 onTap: () {},
                 child: Image.asset(
-                  "/images/logo.png",
+                  "/assets/images/logo.png",
                   height: 40,
                 ),
               );
