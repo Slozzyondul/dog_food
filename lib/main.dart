@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       
       title: 'Dog Food',
-      theme: ThemeData.dark(useMaterial3: false),
+      theme: ThemeData.light(useMaterial3: false),
       home: const HomePage(),
     );
   }
