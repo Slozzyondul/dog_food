@@ -126,6 +126,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             homeBannerWidget(context),
+            sellingPointWidget(),
           ],
         ),
       ),
@@ -134,7 +135,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget homeBannerWidget(BuildContext context) {
     return Container(
-      width: double.infinity, 
+      width: double.infinity,
       height: device_height * 0.35,
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -195,7 +196,9 @@ class _HomePageState extends State<HomePage> {
               minFontSize: 12, // Minimum font size for responsiveness
             ),
           ),
-          SizedBox(height: device_height * 0.1), // Add spacing between text and button
+          SizedBox(
+              height:
+                  device_height * 0.1), // Add spacing between text and button
           // Sign Up Button
           ElevatedButton(
             onPressed: () async {
@@ -227,7 +230,54 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget sellingPoint({required IconData icon, required String text}) {
+    return Row(
+      mainAxisSize: MainAxisSize.min, // Minimize horizontal space usage
+      children: [
+        Container(
+          color: Colors.white,
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 20, // Adjust icon size if needed
+          ),
+        ),
+        const SizedBox(width: 4), // Spacing between icon and text
+        Text(
+          text,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget sellingPointWidget() {
-    return Container();
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      color: const Color.fromRGBO(0, 77, 64, 1),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround, 
+        children: [
+          sellingPoint(
+            icon: Icons.verified,
+            text: "Satisfaction guaranteed",
+          ),
+          sellingPoint(
+            icon: Icons.grain,
+            text: "Grain free",
+          ),
+          sellingPoint(
+            icon: Icons.local_shipping,
+            text: "Free delivery",
+          ),
+        ],
+      ),
+    );
   }
 }
