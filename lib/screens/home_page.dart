@@ -1,4 +1,5 @@
 import 'package:dog_food/methods/build_drop_down.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,8 +12,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late double device_width, device_height;
   @override
   Widget build(BuildContext context) {
+    device_width = MediaQuery.of(context).size.width;
+    device_height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -22,7 +26,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {},
                 child: Image.asset(
                   "/assets/images/logo.png",
-                  height: 40,
+                  height: device_height * 0.3,
                 ),
               );
             },
@@ -121,18 +125,17 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            homeBannerWidget(),
+            homeBannerWidget(context),
           ],
         ),
       ),
     );
   }
 
-  Widget homeBannerWidget() {
+  Widget homeBannerWidget(BuildContext context) {
     return Container(
-      width: double.infinity, // Stretch horizontally to fill the device width
-      height: MediaQuery.of(context).size.height *
-          0.45, // Set a proportional height
+      width: double.infinity, 
+      height: device_height * 0.35,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/assets/images/banner5.png'),
@@ -143,21 +146,56 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Text
-          Text(
-            'HEALTHTY, HAPPY PETS \n      STARTS HERE! \n  \n High-protein kibble  \n Delivered fresh to your door \n',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: const Color.fromRGBO(179, 128, 86, 1), // Fixed the color value
-              shadows: [
-                Shadow(
-                  offset: const Offset(0, 1),
-                  blurRadius: 3,
-                  color: Colors.black.withOpacity(0.5),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: 16.0), // Add horizontal padding
+            child: AutoSizeText.rich(
+              TextSpan(
+                text: 'HEALTHY, HAPPY PETS\n',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: const Color.fromRGBO(179, 128, 86, 1),
+                  shadows: [
+                    Shadow(
+                      offset: const Offset(0, 1),
+                      blurRadius: 3,
+                      color: Colors.black.withOpacity(0.5),
+                    ),
+                  ],
                 ),
-              ],
+                children: const [
+                  TextSpan(
+                    text: 'STARTS HERE!\n\n',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'High-protein kibble\n',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromRGBO(179, 128, 86, 1),
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'Delivered fresh to your door\n',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromRGBO(179, 128, 86, 1),
+                    ),
+                  ),
+                ],
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 5, // Adjust to fit within space
+              minFontSize: 12, // Minimum font size for responsiveness
             ),
           ),
+          SizedBox(height: device_height * 0.1), // Add spacing between text and button
           // Sign Up Button
           ElevatedButton(
             onPressed: () async {
@@ -171,18 +209,25 @@ class _HomePageState extends State<HomePage> {
             },
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-              backgroundColor: const Color.fromRGBO(0, 77, 64, 1),
+              backgroundColor: Colors.white70,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
             child: const Text(
               'Shop Now',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Color.fromRGBO(0, 77, 64, 1),
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget sellingPointWidget() {
+    return Container();
   }
 }
