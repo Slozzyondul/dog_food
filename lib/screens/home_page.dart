@@ -127,6 +127,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             homeBannerWidget(context),
             sellingPointWidget(),
+            bestSellerWidget(),
           ],
         ),
       ),
@@ -258,11 +259,12 @@ class _HomePageState extends State<HomePage> {
   Widget sellingPointWidget() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
-      color: const Color.fromRGBO(0, 77, 64, 1),
+      //color: const Color.fromRGBO(0, 77, 64, 1),
+      color: const Color.fromRGBO(179, 128, 86, 1),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround, 
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           sellingPoint(
             icon: Icons.verified,
@@ -279,5 +281,9 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+
+  Widget bestSellerWidget() {
+    return Container();
   }
 }
