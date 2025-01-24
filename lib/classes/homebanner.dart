@@ -96,7 +96,7 @@ class HomeBannerWidget extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: horizontalPadding24 + verticalPadding8,
-                  backgroundColor: Colors.white70,
+                  backgroundColor: DogFoodAppTheme.primaryButtonColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

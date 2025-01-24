@@ -32,6 +32,7 @@ class _HomePageState extends State<HomePage> {
             (icon: Icons.local_shipping, text: 'Free delivery'),
           ],
         ),
+        BestSellerWidget(),
       ],
     );
   }
