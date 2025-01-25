@@ -3,6 +3,7 @@ import 'package:dog_food/classes/homebanner.dart';
 import 'package:dog_food/classes/pageLayout.dart';
 import 'package:dog_food/classes/pageTopBar.dart';
 import 'package:dog_food/classes/sellingPoints.dart';
+import 'package:dog_food/classes/why_us.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         BestSellerWidget(),
+        const WhyUs(),
       ],
     );
   }
