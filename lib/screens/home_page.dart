@@ -4,6 +4,7 @@ import 'package:dog_food/classes/pageLayout.dart';
 import 'package:dog_food/classes/pageTopBar.dart';
 import 'package:dog_food/classes/sellingPoints.dart';
 import 'package:dog_food/classes/why_us.dart';
+import 'package:dog_food/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,7 +26,9 @@ class _HomePageState extends State<HomePage> {
         PageTopBar(
           onMenuItemSelected: onMenuItemSelected,
         ),
+        verticalMargin4,
         const HomeBannerWidget(),
+        verticalMargin8,
         const SellingPointWidget(
           items: [
             (icon: Icons.verified, text: 'Satisfaction guaranteed'),
@@ -33,7 +36,9 @@ class _HomePageState extends State<HomePage> {
             (icon: Icons.local_shipping, text: 'Free delivery'),
           ],
         ),
+        verticalMargin16,
         BestSellerWidget(),
+        verticalMargin8,
         const WhyUs(),
       ],
     );
