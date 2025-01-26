@@ -4,7 +4,7 @@ import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
 
 class BestSellerWidget extends StatelessWidget {
-  BestSellerWidget({super.key});
+  const BestSellerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
