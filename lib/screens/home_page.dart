@@ -1,5 +1,6 @@
 import 'package:dog_food/classes/bestSeller.dart';
 import 'package:dog_food/classes/contact_us.dart';
+import 'package:dog_food/classes/footer.dart';
 import 'package:dog_food/classes/homebanner.dart';
 import 'package:dog_food/classes/pageLayout.dart';
 import 'package:dog_food/classes/pageTopBar.dart';
@@ -43,6 +44,8 @@ class _HomePageState extends State<HomePage> {
         const WhyUs(),
         verticalMargin300,
         const ContactUs(),
+        verticalMargin4,
+        Footer(),
       ],
     );
   }
