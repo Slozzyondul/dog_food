@@ -1,13 +1,17 @@
+import 'package:dog_food/classes/cart_provider.dart';
 import 'package:dog_food/classes/models/best_seller_model.dart';
 import 'package:dog_food/constants/constants.dart';
 import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BestSellerWidget extends StatelessWidget {
   const BestSellerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
+
     return Padding(
       padding: verticalPadding16,
       child: Column(
@@ -85,7 +89,7 @@ class BestSellerWidget extends StatelessWidget {
                             verticalMargin8,
                             Center(
                               child: Text(
-                                "Price: ${product['price']!}",
+                                "Price: \$${product['price'].toStringAsFixed(2)}",
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
@@ -97,7 +101,22 @@ class BestSellerWidget extends StatelessWidget {
                             const Spacer(),
                             Center(
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  cartProvider.addToCart(product);
+                                  // ScaffoldMessenger.of(context).showSnackBar(
+                                  //   const SnackBar(
+                                  //     content: Text("Added to cart!"),
+                                  //   ),
+                                  // );
+                                  if (ScaffoldMessenger.maybeOf(context) !=
+                                      null) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text("added to cart"),
+                                      ),
+                                    );
+                                  }
+                                },
                                 style: ElevatedButton.styleFrom(
                                   padding:
                                       horizontalPadding24 + verticalPadding8,

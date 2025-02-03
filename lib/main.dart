@@ -1,11 +1,16 @@
+import 'package:dog_food/classes/cart_provider.dart';
 import 'package:dog_food/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    child: const MyApp(),
+    create: (context) => CartProvider(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,11 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      
       title: 'Dog Food',
       theme: ThemeData.light(useMaterial3: false),
       home: const HomePage(),
     );
   }
 }
-

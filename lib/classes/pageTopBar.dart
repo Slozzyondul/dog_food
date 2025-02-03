@@ -1,3 +1,4 @@
+import 'package:dog_food/classes/checkout_screen.dart';
 import 'package:dog_food/classes/dropDownTab.dart';
 import 'package:dog_food/constants/constants.dart';
 import 'package:dog_food/constants/themes.dart';
@@ -34,6 +35,17 @@ class PageTopBar extends StatelessWidget {
               child: Wrap(
                 alignment: WrapAlignment.end,
                 children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CheckoutScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text("cart"),
+                  ),
                   DropDownTab(
                     onSelected: onMenuItemSelected,
                     title: 'Dog Food',

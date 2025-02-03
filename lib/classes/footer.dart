@@ -3,7 +3,7 @@ import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
 
 class Footer extends StatefulWidget {
-  Footer({Key? key}) : super(key: key);
+  const Footer({super.key});
 
   @override
   _FooterState createState() => _FooterState();

@@ -16,17 +16,19 @@ class SellingPointWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       color: DogFoodAppTheme.themeBrownColor,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          for (final item in items) //
-            _SellingPointItem(
-              icon: item.icon,
-              text: item.text,
-            ),
-        ],
+      child: Expanded(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            for (final item in items) //
+              _SellingPointItem(
+                icon: item.icon,
+                text: item.text,
+              ),
+          ],
+        ),
       ),
     );
   }

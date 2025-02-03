@@ -23,30 +23,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return PageLayout(
-      children: [
-        PageTopBar(
-          onMenuItemSelected: onMenuItemSelected,
-        ),
-        verticalMargin4,
-        const HomeBannerWidget(),
-        verticalMargin8,
-        const SellingPointWidget(
-          items: [
-            (icon: Icons.verified, text: 'Satisfaction guaranteed'),
-            (icon: Icons.grain, text: 'Grain free'),
-            (icon: Icons.local_shipping, text: 'Free delivery'),
-          ],
-        ),
-        verticalMargin16,
-        const BestSellerWidget(),
-        verticalMargin8,
-        const WhyUs(),
-        verticalMargin300,
-        const ContactUs(),
-        verticalMargin4,
-        Footer(),
-      ],
+    return Scaffold(
+      body: PageLayout(
+        children: [
+          PageTopBar(
+            onMenuItemSelected: onMenuItemSelected,
+          ),
+          verticalMargin4,
+          const HomeBannerWidget(),
+          verticalMargin8,
+          const SellingPointWidget(
+            items: [
+              (icon: Icons.verified, text: 'Satisfaction guaranteed'),
+              (icon: Icons.grain, text: 'Grain free'),
+              (icon: Icons.local_shipping, text: 'Free delivery'),
+            ],
+          ),
+          verticalMargin16,
+          const BestSellerWidget(),
+          verticalMargin8,
+          const WhyUs(),
+          verticalMargin300,
+          const ContactUs(),
+          verticalMargin4,
+          const Footer(),
+        ],
+      ),
     );
   }
 }
