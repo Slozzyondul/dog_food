@@ -13,21 +13,24 @@ class SellingPointWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      color: DogFoodAppTheme.themeBrownColor,
-      child: Expanded(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            for (final item in items) //
-              _SellingPointItem(
-                icon: item.icon,
-                text: item.text,
-              ),
-          ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        color: DogFoodAppTheme.themeBrownColor,
+        child: Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              for (final item in items) //
+                _SellingPointItem(
+                  icon: item.icon,
+                  text: item.text,
+                ),
+            ],
+          ),
         ),
       ),
     );

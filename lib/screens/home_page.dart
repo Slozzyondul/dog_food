@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
           ),
           verticalMargin4,
           const HomeBannerWidget(),
-          verticalMargin8,
+          verticalMargin4,
           const SellingPointWidget(
             items: [
               (icon: Icons.verified, text: 'Satisfaction guaranteed'),
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           const BestSellerWidget(),
           verticalMargin8,
           const WhyUs(),
-          verticalMargin300,
+          verticalMargin4,
           const ContactUs(),
           verticalMargin4,
           const Footer(),
