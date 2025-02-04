@@ -18,19 +18,17 @@ class SellingPointWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16.0),
         color: DogFoodAppTheme.themeBrownColor,
-        child: Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              for (final item in items) //
-                _SellingPointItem(
-                  icon: item.icon,
-                  text: item.text,
-                ),
-            ],
-          ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            for (final item in items) //
+              _SellingPointItem(
+                icon: item.icon,
+                text: item.text,
+              ),
+          ],
         ),
       ),
     );
@@ -49,14 +47,14 @@ class _SellingPointItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min, // Minimize horizontal space usage
+      mainAxisSize: MainAxisSize.min,
       children: [
         Icon(
           icon,
           color: Colors.white,
-          size: 20, // Adjust icon size if needed
+          size: 20, 
         ),
-        horizontalMargin4, // Spacing between icon and text
+        horizontalMargin4,
         Text(
           text,
           style: const TextStyle(
