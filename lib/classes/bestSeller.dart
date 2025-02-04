@@ -103,11 +103,7 @@ class BestSellerWidget extends StatelessWidget {
                               child: ElevatedButton(
                                 onPressed: () {
                                   cartProvider.addToCart(product);
-                                  // ScaffoldMessenger.of(context).showSnackBar(
-                                  //   const SnackBar(
-                                  //     content: Text("Added to cart!"),
-                                  //   ),
-                                  // );
+
                                   if (ScaffoldMessenger.maybeOf(context) !=
                                       null) {
                                     ScaffoldMessenger.of(context).showSnackBar(

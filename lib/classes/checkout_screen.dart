@@ -1,3 +1,5 @@
+import 'package:dog_food/constants/constants.dart';
+import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'cart_provider.dart';
@@ -20,7 +22,7 @@ class CheckoutScreen extends StatelessWidget {
         amount: totalAmount,
         callBackURL: "https://your-callback-url.com",
         accountReference: "Dog Food Order",
-        transactionDesc: "Buying Dog Food", 
+        transactionDesc: "Buying Dog Food",
       );
 
       if (response.responseCode == "0") {
@@ -44,7 +46,10 @@ class CheckoutScreen extends StatelessWidget {
     final cartProvider = Provider.of<CartProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Checkout")),
+      appBar: AppBar(
+        title: const Center(child: Text("Checkout")),
+        backgroundColor: DogFoodAppTheme.themeBrownColor,
+      ),
       body: Column(
         children: [
           Expanded(
@@ -71,6 +76,15 @@ class CheckoutScreen extends StatelessWidget {
                     style: const TextStyle(fontSize: 20)),
                 const SizedBox(height: 10),
                 ElevatedButton(
+                   style: ElevatedButton.styleFrom(
+                                  padding:
+                                      horizontalPadding24 + verticalPadding8,
+                                  backgroundColor:
+                                      DogFoodAppTheme.primaryButtonColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
                   onPressed: () => _checkout(context, cartProvider.totalAmount),
                   child: const Text("Pay with M-Pesa"),
                 ),

@@ -36,6 +36,13 @@ class PageTopBar extends StatelessWidget {
                 alignment: WrapAlignment.end,
                 children: [
                   ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: horizontalPadding24 + verticalPadding8,
+                      backgroundColor: DogFoodAppTheme.primaryButtonColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,

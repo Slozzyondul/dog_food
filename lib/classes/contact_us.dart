@@ -1,4 +1,5 @@
 import 'package:dog_food/constants/constants.dart';
+import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
 
 class ContactUs extends StatefulWidget {
@@ -100,6 +101,13 @@ class _ContactUsState extends State<ContactUs> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: horizontalPadding24 + verticalPadding8,
+                        backgroundColor: DogFoodAppTheme.primaryButtonColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
                       onPressed: () {
                         // Submit action
                       },
