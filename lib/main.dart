@@ -1,4 +1,5 @@
 import 'package:dog_food/classes/cart_provider.dart';
+import 'package:dog_food/constants/themes.dart';
 import 'package:dog_food/screens/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: DogFoodAppTheme.themeBrownColor,
       debugShowCheckedModeBanner: false,
       title: 'Dog Food',
       theme: ThemeData.light(useMaterial3: false),

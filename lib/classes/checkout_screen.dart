@@ -8,7 +8,7 @@ import 'package:dart_mpesa/dart_mpesa.dart';
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
 
-  void _checkout(BuildContext context, double totalAmount) async {
+  void _checkout(BuildContext context, double totalAmount, String phoneNumber) async {
     final mpesa = Mpesa(
       consumerKey: "YOUR_CONSUMER_KEY",
       consumerSecret: "YOUR_CONSUMER_SECRET",
@@ -18,7 +18,7 @@ class CheckoutScreen extends StatelessWidget {
 
     try {
       final response = await mpesa.lipanaMpesaOnline(
-        phoneNumber: "2547XXXXXXXX",
+        phoneNumber: phoneNumber,
         amount: totalAmount,
         callBackURL: "https://your-callback-url.com",
         accountReference: "Dog Food Order",
@@ -39,6 +39,41 @@ class CheckoutScreen extends StatelessWidget {
         SnackBar(content: Text("Error: $e")),
       );
     }
+  }
+
+  Future<void> _showPhoneNumberDialog(BuildContext context, double totalAmount) async {
+    final phoneNumberController = TextEditingController();
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // User must tap a button to close the dialog
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Enter Phone Number'),
+          content: TextField(
+            controller: phoneNumberController,
+            decoration: const InputDecoration(hintText: "2547XXXXXXXX"),
+            keyboardType: TextInputType.phone,
+          ),
+          actions: <Widget>[
+            TextButton(
+              
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Proceed'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _checkout(context, totalAmount, phoneNumberController.text);
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -76,16 +111,14 @@ class CheckoutScreen extends StatelessWidget {
                     style: const TextStyle(fontSize: 20)),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                   style: ElevatedButton.styleFrom(
-                                  padding:
-                                      horizontalPadding24 + verticalPadding8,
-                                  backgroundColor:
-                                      DogFoodAppTheme.primaryButtonColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                  onPressed: () => _checkout(context, cartProvider.totalAmount),
+                  style: ElevatedButton.styleFrom(
+                    padding: horizontalPadding24 + verticalPadding8,
+                    backgroundColor: DogFoodAppTheme.primaryButtonColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () => _showPhoneNumberDialog(context, cartProvider.totalAmount),
                   child: const Text("Pay with M-Pesa"),
                 ),
               ],
