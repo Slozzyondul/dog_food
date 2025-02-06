@@ -18,7 +18,8 @@ RECIPIENT_PHONE_NUMBER = "254729684890"
 
 # Get OAuth Token
 def get_mpesa_token():
-    url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+    url = "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
+    #url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
     credentials = f"{CONSUMER_KEY}:{CONSUMER_SECRET}"
     encoded_credentials = base64.b64encode(credentials.encode()).decode()
 
@@ -47,7 +48,8 @@ def lipa_na_mpesa():
     timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     password = base64.b64encode(f"{SHORTCODE}{PASS_KEY}{timestamp}".encode()).decode()
 
-    url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+    #url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+    url = "https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
     headers = {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",
@@ -68,8 +70,14 @@ def lipa_na_mpesa():
     }
 
     response = requests.post(url, json=payload, headers=headers)
+    response_data = response.json()
+    # return response.json(), response.status_code
 
-    return response.json(), response.status_code
+    if response.status_code == 200 and response_data.get("ResponseCode") == "0":
+        return jsonify({"success": True, "message": "Payment initiated successfully"}), 200
+    else:
+        return jsonify({"error": response_data.get("errorMessage", "Payment failed")}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

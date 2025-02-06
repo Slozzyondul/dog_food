@@ -32,15 +32,15 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
       if (!mounted) return;
 
-      if (response.statusCode == 200 && data["ResponseCode"] == "0") {
+      if (response.statusCode == 200 && data["success"] == true) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Payment successful!")),
+          const SnackBar(content: Text("Payment initiated successfully!")),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
               content: Text(
-                  "Payment failed: ${data["errorMessage"] ?? "Unknown error"}")),
+                  "Payment failed: ${data["error"] ?? "Unknown error"}")),
         );
       }
     } catch (e) {
