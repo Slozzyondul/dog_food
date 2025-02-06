@@ -15,8 +15,8 @@ dependencies:
   auto_size_text: ^3.0.0
   cupertino_icons: ^1.0.8
   provider: ^6.1.2
-  dart_mpesa: ^2.0.3
   mpesa_flutter_plugin: 
+  http: ^0.13.6 
 
 
 dev_dependencies:

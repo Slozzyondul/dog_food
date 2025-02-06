@@ -1,48 +1,57 @@
+import 'dart:convert';
+
 import 'package:dog_food/constants/constants.dart';
 import 'package:dog_food/constants/themes.dart';
-import 'package:dog_food/keys/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'cart_provider.dart';
-import 'package:dart_mpesa/dart_mpesa.dart';
+import 'package:http/http.dart' as http;
 
-class CheckoutScreen extends StatelessWidget {
+class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
 
-  void _checkout(BuildContext context, double totalAmount, String phoneNumber) async {
-    final mpesa = Mpesa(
-      consumerKey: kConsumerKey,
-      consumerSecret: kConsumerSecret,
-      passKey: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
-      shortCode: "174379",
-    );
+  @override
+  State<CheckoutScreen> createState() => _CheckoutScreenState();
+}
+
+class _CheckoutScreenState extends State<CheckoutScreen> {
+  Future<void> _checkout(double totalAmount, String phoneNumber) async {
+    const url = "http://127.0.0.1:5000/pay"; // Use your Flask server URL
 
     try {
-      final response = await mpesa.lipanaMpesaOnline(
-        phoneNumber: phoneNumber,
-        amount: totalAmount,
-        callBackURL: "https://your-callback-url.com",
-        accountReference: "Dog Food Order",
-        transactionDesc: "Buying Dog Food",
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({
+          "phone_number": phoneNumber,
+          "amount": totalAmount,
+        }),
       );
 
-      if (response.responseCode == "0") {
+      final data = jsonDecode(response.body);
+
+      if (!mounted) return;
+
+      if (response.statusCode == 200 && data["ResponseCode"] == "0") {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Payment successful!")),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Payment failed: ${response.errorMessage}")),
+          SnackBar(
+              content: Text(
+                  "Payment failed: ${data["errorMessage"] ?? "Unknown error"}")),
         );
       }
     } catch (e) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error: $e")),
       );
     }
   }
 
-  Future<void> _showPhoneNumberDialog(BuildContext context, double totalAmount) async {
+  Future<void> _showPhoneNumberDialog(double totalAmount) async {
     final phoneNumberController = TextEditingController();
 
     return showDialog<void>(
@@ -58,7 +67,6 @@ class CheckoutScreen extends StatelessWidget {
           ),
           actions: <Widget>[
             TextButton(
-              
               child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -68,7 +76,7 @@ class CheckoutScreen extends StatelessWidget {
               child: const Text('Proceed'),
               onPressed: () {
                 Navigator.of(context).pop();
-                _checkout(context, totalAmount, phoneNumberController.text);
+                _checkout(totalAmount, phoneNumberController.text);
               },
             ),
           ],
@@ -119,7 +127,8 @@ class CheckoutScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () => _showPhoneNumberDialog(context, cartProvider.totalAmount),
+                  onPressed: () =>
+                      _showPhoneNumberDialog(cartProvider.totalAmount),
                   child: const Text("Pay with M-Pesa"),
                 ),
               ],
