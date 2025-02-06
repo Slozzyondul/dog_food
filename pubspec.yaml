@@ -16,6 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   provider: ^6.1.2
   dart_mpesa: ^2.0.3
+  mpesa_flutter_plugin: 
 
 
 dev_dependencies:

@@ -1,5 +1,6 @@
 import 'package:dog_food/constants/constants.dart';
 import 'package:dog_food/constants/themes.dart';
+import 'package:dog_food/keys/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'cart_provider.dart';
@@ -10,10 +11,10 @@ class CheckoutScreen extends StatelessWidget {
 
   void _checkout(BuildContext context, double totalAmount, String phoneNumber) async {
     final mpesa = Mpesa(
-      consumerKey: "YOUR_CONSUMER_KEY",
-      consumerSecret: "YOUR_CONSUMER_SECRET",
-      passKey: "YOUR_PASSKEY",
-      shortCode: "YOUR_SHORTCODE",
+      consumerKey: kConsumerKey,
+      consumerSecret: kConsumerSecret,
+      passKey: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
+      shortCode: "174379",
     );
 
     try {
