@@ -1,4 +1,5 @@
 import 'package:dog_food/constants/constants.dart';
+import 'package:dog_food/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationJourney extends StatefulWidget {
@@ -54,7 +55,9 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                // Navigate to SignupScreen
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const HomePage()));
               },
               child: const Text("OK"),
             ),
