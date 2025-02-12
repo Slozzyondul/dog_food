@@ -5,6 +5,7 @@ import 'package:dog_food/classes/homebanner.dart';
 import 'package:dog_food/classes/pageLayout.dart';
 import 'package:dog_food/classes/pageTopBar.dart';
 import 'package:dog_food/classes/sellingPoints.dart';
+import 'package:dog_food/classes/signup_Now_widget.dart';
 import 'package:dog_food/classes/why_us.dart';
 import 'package:dog_food/constants/constants.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,8 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           verticalMargin16,
+          const SignupNowWidget(),
+          verticalMargin12,
           const BestSellerWidget(),
           verticalMargin8,
           const WhyUs(),
