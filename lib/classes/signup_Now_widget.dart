@@ -13,14 +13,21 @@ class _SignupNowWidgetState extends State<SignupNowWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: MaterialButton(
-        onPressed: () {},
-        padding: allPadding16,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: DogFoodAppTheme.secondaryButtonColor),
-        ),
-        child: const Text('Sign Up Now'),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          MaterialButton(
+            textColor: DogFoodAppTheme.primaryButtonTextColor,
+            color: DogFoodAppTheme.primaryButtonColor,
+            onPressed: () {},
+            padding: allPadding16,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+              side: const BorderSide(color: DogFoodAppTheme.primaryButtonColor),
+            ),
+            child: const Text('Sign Up Now'),
+          ),
+        ],
       ),
     );
   }
