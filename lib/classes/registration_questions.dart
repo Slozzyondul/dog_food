@@ -15,7 +15,7 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
   int _months = 0;
   double _weight = 0.0;
   String _bodyCondition = 'Ideal';
-  final List<String> _selectedRecipes = [];
+  //final List<String> _selectedRecipes = [];
   String _name = '';
   String _email = '';
   String _street = '';
@@ -25,11 +25,50 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
   String _zipCode = '';
   String _phoneNumber = '';
 
+  void _showConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Confirmation"),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text("Dog Name: $_dogName"),
+                Text("Gender: $_gender"),
+                Text("Breed: $_breed"),
+                Text("Age: $_years years, $_months months"),
+                Text("Weight: $_weight kg"),
+                Text("Body Condition: $_bodyCondition"),
+                Text("Name: $_name"),
+                Text("Email: $_email"),
+                Text("Street: $_street"),
+                Text("Apartment: $_apartment"),
+                Text("City: $_city"),
+                Text("State: $_state"),
+                Text("Zip Code: $_zipCode"),
+                Text("Phone Number: $_phoneNumber"),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-      padding: verticalPadding16,
+        padding: verticalPadding16,
         child: Stepper(
           currentStep: _currentStep,
           onStepContinue: () {
@@ -38,22 +77,7 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
                 _currentStep += 1;
               });
             } else {
-              // Process the final submission
-              print('Dog Name: $_dogName');
-              print('Gender: $_gender');
-              print('Breed: $_breed');
-              print('Age: $_years years and $_months months');
-              print('Weight: $_weight');
-              print('Body Condition: $_bodyCondition');
-              //print('Selected Recipes: $_selectedRecipes');
-              print('Name: $_name');
-              print('Email: $_email');
-              print('Street: $_street');
-              print('Apartment: $_apartment');
-              print('City: $_city');
-              print('State: $_state');
-              print('Zip Code: $_zipCode');
-              print('Phone Number: $_phoneNumber');
+              _showConfirmationDialog();
             }
           },
           onStepCancel: () {
@@ -113,7 +137,8 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
                       const SizedBox(width: 10),
                       Expanded(
                         child: TextFormField(
-                          decoration: const InputDecoration(labelText: 'Months'),
+                          decoration:
+                              const InputDecoration(labelText: 'Months'),
                           onChanged: (value) {
                             setState(() {
                               _months = int.tryParse(value) ?? 0;
@@ -145,7 +170,8 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
                         _bodyCondition = value!;
                       });
                     },
-                    items: ['Underweight', 'Ideal', 'Overweight'].map((String value) {
+                    items: ['Underweight', 'Ideal', 'Overweight']
+                        .map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
@@ -224,7 +250,8 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
                     },
                   ),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: "Apartment/Unit"),
+                    decoration:
+                        const InputDecoration(labelText: "Apartment/Unit"),
                     onChanged: (value) {
                       setState(() {
                         _apartment = value;
@@ -256,7 +283,8 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
                     },
                   ),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: "Phone Number"),
+                    decoration:
+                        const InputDecoration(labelText: "Phone Number"),
                     onChanged: (value) {
                       setState(() {
                         _phoneNumber = value;
