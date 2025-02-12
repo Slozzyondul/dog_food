@@ -33,7 +33,7 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
         child: Stepper(
           currentStep: _currentStep,
           onStepContinue: () {
-            if (_currentStep < 2) {
+            if (_currentStep < 3) {
               setState(() {
                 _currentStep += 1;
               });
@@ -45,7 +45,7 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
               print('Age: $_years years and $_months months');
               print('Weight: $_weight');
               print('Body Condition: $_bodyCondition');
-              print('Selected Recipes: $_selectedRecipes');
+              //print('Selected Recipes: $_selectedRecipes');
               print('Name: $_name');
               print('Email: $_email');
               print('Street: $_street');
@@ -155,39 +155,39 @@ class _RegistrationJourneyState extends State<RegistrationJourney> {
                 ],
               ),
             ),
-            Step(
-              title: const Text('Select Recipes'),
-              content: Column(
-                children: [
-                  CheckboxListTile(
-                    title: const Text('Chicken Cuisine \$8'),
-                    value: _selectedRecipes.contains('Chicken Cuisine'),
-                    onChanged: (value) {
-                      setState(() {
-                        if (value!) {
-                          _selectedRecipes.add('Chicken Cuisine');
-                        } else {
-                          _selectedRecipes.remove('Chicken Cuisine');
-                        }
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: const Text('Pork Potluck \$10'),
-                    value: _selectedRecipes.contains('Pork Potluck'),
-                    onChanged: (value) {
-                      setState(() {
-                        if (value!) {
-                          _selectedRecipes.add('Pork Potluck');
-                        } else {
-                          _selectedRecipes.remove('Pork Potluck');
-                        }
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
+            // Step(
+            //   title: const Text('Select Recipes'),
+            //   content: Column(
+            //     children: [
+            //       CheckboxListTile(
+            //         title: const Text('Chicken Cuisine \$8'),
+            //         value: _selectedRecipes.contains('Chicken Cuisine'),
+            //         onChanged: (value) {
+            //           setState(() {
+            //             if (value!) {
+            //               _selectedRecipes.add('Chicken Cuisine');
+            //             } else {
+            //               _selectedRecipes.remove('Chicken Cuisine');
+            //             }
+            //           });
+            //         },
+            //       ),
+            //       CheckboxListTile(
+            //         title: const Text('Pork Potluck \$10'),
+            //         value: _selectedRecipes.contains('Pork Potluck'),
+            //         onChanged: (value) {
+            //           setState(() {
+            //             if (value!) {
+            //               _selectedRecipes.add('Pork Potluck');
+            //             } else {
+            //               _selectedRecipes.remove('Pork Potluck');
+            //             }
+            //           });
+            //         },
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Step(
               title: const Text('Your Details'),
               content: Column(
