@@ -1,3 +1,4 @@
+import 'package:dog_food/classes/registration_questions.dart';
 import 'package:dog_food/constants/constants.dart';
 import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,13 @@ class _SignupNowWidgetState extends State<SignupNowWidget> {
           MaterialButton(
             textColor: DogFoodAppTheme.primaryButtonTextColor,
             color: DogFoodAppTheme.primaryButtonColor,
-            onPressed: () {},
+            onPressed: () {
+              // Navigate to SignupScreen
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => RegistrationJourney()));
+            },
             padding: allPadding16,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
