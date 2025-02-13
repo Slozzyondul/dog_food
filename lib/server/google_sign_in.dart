@@ -1,7 +1,6 @@
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:googleapis/sheets/v4.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
 final GoogleSignIn _googleSignIn = GoogleSignIn(
   scopes: [
@@ -9,7 +8,7 @@ final GoogleSignIn _googleSignIn = GoogleSignIn(
   ],
 );
 
-Future<void> submitDataToSheet() async {
+Future<void> submitDataToSheet(String name, String email, String mobile, String message) async {
   try {
     // Authenticate the user
     final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
@@ -27,16 +26,16 @@ Future<void> submitDataToSheet() async {
       return;
     }
     // Create an authenticated HTTP client
-    final authClient = GoogleAuthClient(accessToken!);
+    final authClient = GoogleAuthClient(accessToken);
     // Initialize the Sheets API
     final sheetsApi = SheetsApi(authClient);
     // Define the spreadsheet ID and range
     const spreadsheetId = '1HprlT9vK5s6cJ1z6R8QfYYMEtOOkd11eLYsCeFOyXyM';
-    const range = 'Sheet1!A1:C1';
+    const range = 'websiteSubmissions!A:C';
     // Prepare the data to be sent
     final valueRange = ValueRange.fromJson({
       'values': [
-        ['Data1', 'Data2', 'Data3'],
+        [name, email, mobile, message],
       ],
     });
     // Append the data to the spreadsheet

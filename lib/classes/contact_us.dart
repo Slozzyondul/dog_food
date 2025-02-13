@@ -144,7 +144,18 @@ class _ContactUsState extends State<ContactUs> {
                         ),
                       ),
                       onPressed: () {
-                        submitDataToSheet;
+                        submitDataToSheet(
+                          _nameController.text,
+                          _emailController.text,
+                          _mobileController.text,
+                          _messageController.text,
+                        );
+
+                        // Optionally clear fields after submission
+                        _nameController.clear();
+                        _emailController.clear();
+                        _mobileController.clear();
+                        _messageController.clear();
                       },
                       child: const Text("Submit"),
                     ),
