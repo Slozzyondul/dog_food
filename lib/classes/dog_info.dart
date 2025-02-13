@@ -173,7 +173,7 @@ class WeightPage extends StatelessWidget {
                   ),
                 );
               },
-              child: Text("Continue"),
+              child: const Text("Continue"),
             )
           ],
         ),

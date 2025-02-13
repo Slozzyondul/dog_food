@@ -1,6 +1,7 @@
 import 'package:dog_food/constants/constants.dart';
 import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatefulWidget {
   const ContactUs({super.key});
@@ -73,11 +74,44 @@ class _ContactUsState extends State<ContactUs> {
                 const SizedBox(height: 16),
                 Row(
                   children: [
-                    _buildSocialIcon(Icons.facebook),
+                    GestureDetector(
+                      child: _buildSocialIcon(Icons.facebook),
+                      onTap: () async {
+                        const url = 'https://www.facebook.com/paws.co.ke';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          // Handle error if the URL cannot be launched
+                          print('Could not launch $url');
+                        }
+                      },
+                    ),
                     const SizedBox(width: 8),
-                    _buildSocialIcon(Icons.camera_alt), // Instagram icon
+                    GestureDetector(
+                      child: _buildSocialIcon(Icons.camera_alt),
+                      onTap: () async {
+                        const url = 'https://www.instagram.com/paws.co.ke/';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          // Handle error if the URL cannot be launched
+                          print('Could not launch $url');
+                        }
+                      },
+                    ),
                     const SizedBox(width: 8),
-                    _buildSocialIcon(Icons.contact_phone),
+                    GestureDetector(
+                      child: _buildSocialIcon(Icons.contact_phone),
+                      onTap: () async {
+                        const url = 'https://wa.me/message/UTDJXATS2FQXM1';
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          // Handle error if the URL cannot be launched
+                          print('Could not launch $url');
+                        }
+                      },
+                    ),
                   ],
                 ),
               ],
@@ -141,7 +175,7 @@ class _ContactUsState extends State<ContactUs> {
       decoration: InputDecoration(
         hintText: hintText,
         filled: true,
-        fillColor: Colors.green[100],
+        fillColor: DogFoodAppTheme.backgroundColor1,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,
