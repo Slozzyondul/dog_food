@@ -1,5 +1,6 @@
 import 'package:dog_food/constants/constants.dart';
 import 'package:dog_food/constants/themes.dart';
+import 'package:dog_food/server/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -55,7 +56,7 @@ class _ContactUsState extends State<ContactUs> {
                     const Icon(Icons.phone, size: 18, color: Colors.white),
                     const SizedBox(width: 8),
                     Text(
-                      "+254 111 424 902",
+                      "+254792 352 745",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
@@ -143,7 +144,7 @@ class _ContactUsState extends State<ContactUs> {
                         ),
                       ),
                       onPressed: () {
-                        // Submit action
+                        submitDataToSheet;
                       },
                       child: const Text("Submit"),
                     ),

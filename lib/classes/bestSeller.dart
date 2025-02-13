@@ -89,7 +89,7 @@ class BestSellerWidget extends StatelessWidget {
                             verticalMargin8,
                             Center(
                               child: Text(
-                                "Price: \$${product['price'].toStringAsFixed(2)}",
+                                "Price: Ksh ${product['price'].toStringAsFixed(2)}",
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
