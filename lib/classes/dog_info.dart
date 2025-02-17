@@ -25,7 +25,8 @@ class RegistrationData {
 // Page 1: Dog Information
 class DogInfoPage extends StatefulWidget {
   final RegistrationData data;
-  const DogInfoPage({super.key, required this.data});
+  final double progress;
+  const DogInfoPage({super.key, required this.data, this.progress = 0.25});
 
   @override
   _DogInfoPageState createState() => _DogInfoPageState();
@@ -46,7 +47,7 @@ class _DogInfoPageState extends State<DogInfoPage> {
         child: Column(
           children: [
             LinearProgressIndicator(
-              value: 0.25,
+              value: widget.progress,
               borderRadius: BorderRadius.circular(32),
               color: DogFoodAppTheme.menuBrownColor,
               minHeight: 32,
@@ -104,7 +105,7 @@ class _DogInfoPageState extends State<DogInfoPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => WeightPage(data: widget.data),
+                    builder: (context) => WeightPage(data: widget.data, progress: 0.5),
                   ),
                 );
               },
@@ -120,7 +121,8 @@ class _DogInfoPageState extends State<DogInfoPage> {
 // Page 2: Weight & Body Condition
 class WeightPage extends StatelessWidget {
   final RegistrationData data;
-  const WeightPage({super.key, required this.data});
+  final double progress;
+  const WeightPage({super.key, required this.data, this.progress = 0.5});
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +136,7 @@ class WeightPage extends StatelessWidget {
         child: Column(
           children: [
             LinearProgressIndicator(
-              value: 0.5,
+              value: progress,
               borderRadius: BorderRadius.circular(32),
               color: DogFoodAppTheme.menuBrownColor,
               minHeight: 32,
@@ -169,7 +171,7 @@ class WeightPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => OwnerInfoPage(data: data),
+                    builder: (context) => OwnerInfoPage(data: data, progress: 0.75),
                   ),
                 );
               },
@@ -185,7 +187,8 @@ class WeightPage extends StatelessWidget {
 // Page 3: Owner Info
 class OwnerInfoPage extends StatelessWidget {
   final RegistrationData data;
-  const OwnerInfoPage({super.key, required this.data});
+  final double progress;
+  const OwnerInfoPage({super.key, required this.data, this.progress = 0.75});
 
   @override
   Widget build(BuildContext context) {
@@ -199,7 +202,7 @@ class OwnerInfoPage extends StatelessWidget {
         child: Column(
           children: [
             LinearProgressIndicator(
-              value: 0.75,
+              value: progress,
               borderRadius: BorderRadius.circular(32),
               color: DogFoodAppTheme.menuBrownColor,
               minHeight: 32,
@@ -230,7 +233,7 @@ class OwnerInfoPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddressPage(data: data),
+                    builder: (context) => AddressPage(data: data, progress: 1.0),
                   ),
                 );
               },
@@ -246,7 +249,8 @@ class OwnerInfoPage extends StatelessWidget {
 // Page 4: Address & Confirmation
 class AddressPage extends StatefulWidget {
   final RegistrationData data;
-  const AddressPage({super.key, required this.data});
+  final double progress;
+  const AddressPage({super.key, required this.data, this.progress = 1.0});
 
   @override
   State<AddressPage> createState() => _AddressPageState();
