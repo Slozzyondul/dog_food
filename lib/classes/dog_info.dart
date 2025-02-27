@@ -274,7 +274,6 @@ class _WeightPageState extends State<WeightPage>
     );
   }
 }
-
 // Page 3: Owner Info
 class OwnerInfoPage extends StatefulWidget {
   const OwnerInfoPage({super.key});
