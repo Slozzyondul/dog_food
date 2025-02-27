@@ -3,13 +3,18 @@ import 'package:googleapis/sheets/v4.dart';
 import 'package:http/http.dart' as http;
 
 final GoogleSignIn _googleSignIn = GoogleSignIn(
-  clientId: '967443125394-eeev6bdju5dhqbklt9u31u8g35tq3pje.apps.googleusercontent.com',
+  clientId:
+      '967443125394-eeev6bdju5dhqbklt9u31u8g35tq3pje.apps.googleusercontent.com',
   scopes: [
     'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email',
+    'openid',
   ],
 );
 
-Future<void> submitDataToSheet(String name, String email, String mobile, String message) async {
+Future<void> submitDataToSheet(
+    String name, String email, String mobile, String message) async {
   try {
     // Force a fresh sign-in
     await _googleSignIn.signOut();
