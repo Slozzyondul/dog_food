@@ -11,6 +11,7 @@ class SignupNowWidget extends StatefulWidget {
 }
 
 class _SignupNowWidgetState extends State<SignupNowWidget> {
+  var _data = RegistrationData();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,14 +21,15 @@ class _SignupNowWidgetState extends State<SignupNowWidget> {
           MaterialButton(
             textColor: DogFoodAppTheme.primaryButtonTextColor,
             color: DogFoodAppTheme.primaryButtonColor,
-            onPressed: () {
-              // Navigate to DogInfoPage
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DogInfoPage(data: RegistrationData()),
-                ),
+            onPressed: () async {
+              final result = await Navigator.of(context).push(
+                DogRegistration.route(_data),
               );
+              if (mounted && result != null) {
+                setState(() {
+                  _data = result;
+                });
+              }
             },
             padding: allPadding16,
             shape: RoundedRectangleBorder(
