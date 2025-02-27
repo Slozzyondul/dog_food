@@ -6,23 +6,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mpesa_flutter_plugin/initializer.dart';
 import 'package:provider/provider.dart';
+import 'package:google_sign_in/google_sign_in.dart'; // Add this import
 
 void main() {
+  // Initialize Google Sign-In
+  final GoogleSignIn googleSignIn = GoogleSignIn(
+    clientId: kGoogleClientId,
+    scopes: [
+      'https://www.googleapis.com/auth/spreadsheets',
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email',
+      'openid',
+    ],
+  );
+
+  // Initialize MPESA
   MpesaFlutterPlugin.setConsumerKey(kConsumerKey);
   MpesaFlutterPlugin.setConsumerSecret(kConsumerSecret);
 
+  // Ensure Flutter binding is initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Set system UI mode
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  runApp(ChangeNotifierProvider(
-    child: const MyApp(),
-    create: (context) => CartProvider(),
-  ));
+
+  // Run the app
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CartProvider()),
+        Provider<GoogleSignIn>.value(value: googleSignIn), // Provide GoogleSignIn instance
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
