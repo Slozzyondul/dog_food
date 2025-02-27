@@ -3,6 +3,7 @@ import 'package:googleapis/sheets/v4.dart';
 import 'package:http/http.dart' as http;
 
 final GoogleSignIn _googleSignIn = GoogleSignIn(
+  clientId: '967443125394-eeev6bdju5dhqbklt9u31u8g35tq3pje.apps.googleusercontent.com',
   scopes: [
     'https://www.googleapis.com/auth/spreadsheets',
   ],
@@ -10,6 +11,9 @@ final GoogleSignIn _googleSignIn = GoogleSignIn(
 
 Future<void> submitDataToSheet(String name, String email, String mobile, String message) async {
   try {
+    // Force a fresh sign-in
+    await _googleSignIn.signOut();
+
     // Authenticate the user
     final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
     if (googleUser == null) {
@@ -30,9 +34,11 @@ Future<void> submitDataToSheet(String name, String email, String mobile, String 
     // Initialize the Sheets API
     final sheetsApi = SheetsApi(authClient);
     // Define the spreadsheet ID and range
-    const spreadsheetId = '1HprlT9vK5s6cJ1z6R8QfYYMEtOOkd11eLYsCeFOyXyM';
-    const range = 'websiteSubmissions!A:C';
+    const spreadsheetId = '1rNDS04FKIlSQHB924Xp0pLU42A6ya0WcWanjcaEcX2E';
+    //Try a simple range:
+    const range = 'websiteSubmissions!A1';
     // Prepare the data to be sent
+    print("Name: $name, Email: $email, Mobile: $mobile, Message: $message");
     final valueRange = ValueRange.fromJson({
       'values': [
         [name, email, mobile, message],
@@ -48,6 +54,7 @@ Future<void> submitDataToSheet(String name, String email, String mobile, String 
     print("Data submitted successfully!");
   } catch (e) {
     print("Error submitting data: $e");
+    print(e.runtimeType);
   }
 }
 
