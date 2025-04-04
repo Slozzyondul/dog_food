@@ -87,13 +87,102 @@ class _ContactUsState extends State<ContactUs> {
             ),
           ],
         ),
+        verticalMargin16,
+        Row(
+          children: [
+            const Icon(
+              Icons.email,
+              size: 18,
+              color: Colors.black,
+            ),
+            horizontalMargin18,
+            Text(
+              "pawske@gmail.com",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
+        ),
+        verticalMargin16,
+        Row(
+          children: [
+            _buildSocialButton(
+              icon: Icons.facebook,
+              url: 'https://www.facebook.com/paws.co.ke',
+            ),
+            const SizedBox(width: 8),
+            _buildSocialButton(
+              icon: Icons.camera_alt,
+              url: 'https://www.instagram.com/paws.co.ke/',
+            ),
+            const SizedBox(width: 8),
+            _buildSocialButton(
+              icon: Icons.contact_phone,
+              url: 'https://wa.me/message/UTDJXATS2FQXM1',
+            ),
+          ],
+        ),
       ],
     );
   }
 
+ 
   Widget _buildRightColumn(BuildContext context) {
-    return Column();
+    return Padding(
+      padding: allPadding16,
+      child: Column(
+        children: [
+          _buildTextField("Your Name", _nameController),
+          const SizedBox(height: 8),
+          _buildTextField("Your Email Address", _emailController),
+          const SizedBox(height: 8),
+          _buildTextField("Your Mobile Number", _mobileController),
+          const SizedBox(height: 8),
+          _buildTextField("How Can I Help You", _messageController,
+              maxLines: 5),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding: horizontalPadding24 + verticalPadding8,
+                  backgroundColor: DogFoodAppTheme.primaryButtonColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                onPressed: () async {
+                  await submitDataToSheet(
+                    context,
+                    _nameController.text,
+                    _emailController.text,
+                    _mobileController.text,
+                    _messageController.text,
+                  );
+
+                  _nameController.clear();
+                  _emailController.clear();
+                  _mobileController.clear();
+                  _messageController.clear();
+                },
+                child: const Text("Submit"),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  _nameController.clear();
+                  _emailController.clear();
+                  _mobileController.clear();
+                  _messageController.clear();
+                },
+                child: const Text("Reset"),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
+
 
   Widget _buildTextField(String hintText, TextEditingController controller,
       {int maxLines = 1}) {
@@ -109,6 +198,19 @@ class _ContactUsState extends State<ContactUs> {
           borderSide: BorderSide.none,
         ),
       ),
+    );
+  }
+
+  Widget _buildSocialButton({required IconData icon, required String url}) {
+    return GestureDetector(
+      onTap: () async {
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          debugPrint('could not launch $url');
+        }
+      },
+      child: _buildSocialIcon(icon),
     );
   }
 
