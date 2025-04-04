@@ -20,8 +20,8 @@ class SellingPointWidget extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: isSmall ? 8 : 16,
-        vertical: isSmall ? 8 : 12,
+        horizontal: isSmall ? 0 : 0,
+        vertical: isSmall ? 0 : 0,
       ),
       child: Container(
         width: double.infinity,
