@@ -1,0 +1,2 @@
+/home/solo/Documents/projects/matt/dog_food/android/app/.cxx/Debug/44281m6c/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/solo/Documents/projects/matt/dog_food/android/app/.cxx/Debug/44281m6c/armeabi-v7a/CMakeFiles/rebuild_cache.dir

@@ -38,16 +38,18 @@ class _WhyUsState extends State<WhyUs> {
                 "Crafted with real meat and",
                 "natural ingredients",
               ),
+              horizontalMargin8,
               _buildImageCard(
                 context,
                 "assets/assets/images/affordable.png",
                 "Affordable prices without",
                 "compromising quality",
               ),
+              horizontalMargin8,
               _buildImageCard(
                 context,
                 "assets/assets/images/formulas.png",
-                "Tailored formulas for every life stage",
+                "Tailored formulas for every",
                 "life stage",
               ),
             ],
@@ -63,8 +65,8 @@ class _WhyUsState extends State<WhyUs> {
       children: [
         Image.asset(
           imagePath,
-          height: 80,
-          width: 80,
+          height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width * 0.1,
           fit: BoxFit.cover,
         ),
         verticalMargin8,
@@ -73,6 +75,7 @@ class _WhyUsState extends State<WhyUs> {
           style: Theme.of(context).textTheme.bodySmall,
           textAlign: TextAlign.center,
         ),
+        verticalMargin4,
         Text(
           subtitle,
           style: Theme.of(context).textTheme.bodySmall,

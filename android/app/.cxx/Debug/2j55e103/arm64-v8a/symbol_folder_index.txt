@@ -1,0 +1,1 @@
+/home/solo/Documents/projects/matt/dog_food/build/app/intermediates/cxx/Debug/2j55e103/obj/arm64-v8a

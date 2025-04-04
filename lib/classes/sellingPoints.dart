@@ -1,5 +1,4 @@
-
-import 'package:dog_food/constants/constants.dart';
+import 'package:dog_food/page_size/responsive_screen_helper.dart';
 import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -9,58 +8,89 @@ class SellingPointWidget extends StatelessWidget {
     required this.items,
   });
 
-  final List<({IconData icon, String text})> items;
+  final List<Map<String, dynamic>> items; 
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      color: DogFoodAppTheme.themeBrownColor,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          for (final item in items) //
-            _SellingPointItem(
-              icon: item.icon,
-              text: item.text,
-            ),
-        ],
+    final isSmall = ResponsiveHelper.isSmallScreen(context);
+    final isLandscape = ResponsiveHelper.isLandscape(context);
+
+    List<Map<String, dynamic>> firstRow = items.length >= 2 ? items.sublist(0, 2) : items;
+    List<Map<String, dynamic>> secondRow = items.length > 2 ? items.sublist(2) : [];
+
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmall ? 8 : 16,
+        vertical: isSmall ? 8 : 12,
+      ),
+      child: Container(
+        width: double.infinity,
+        height: ResponsiveHelper.responsiveValue(
+          context,
+          small: isLandscape ? 80 : 100,
+          large: 80,
+        ),
+        decoration: BoxDecoration(
+          color: DogFoodAppTheme.themeBrownColor,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        padding: EdgeInsets.all(isSmall ? 8 : 16),
+        child: isSmall && !isLandscape
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: firstRow.map((item) => 
+                      _buildItem(context, item, isSmall),
+                    ).toList(),
+                  ),
+                  if (secondRow.isNotEmpty) ...[
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: secondRow.map((item) => 
+                        _buildItem(context, item, isSmall),
+                      ).toList(),
+                    ),
+                  ],
+                ],
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: items.map((item) => 
+                  _buildItem(context, item, isSmall),
+                ).toList(),
+              ),
       ),
     );
   }
-}
 
-class _SellingPointItem extends StatelessWidget {
-  const _SellingPointItem({
-    required this.icon,
-    required this.text,
-  });
-
-  final IconData icon;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min, // Minimize horizontal space usage
-      children: [
-        Icon(
-          icon,
-          color: Colors.white,
-          size: 20, // Adjust icon size if needed
-        ),
-        horizontalMargin4, // Spacing between icon and text
-        Text(
-          text,
-          style: const TextStyle(
+  Widget _buildItem(BuildContext context, Map<String, dynamic> item, bool isSmall) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmall ? 4 : 8,
+        vertical: isSmall ? 2 : 4,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            item['icon'] as IconData,
             color: Colors.white,
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
+            size: isSmall ? 18 : 24,
           ),
-        ),
-      ],
+          const SizedBox(width: 8),
+          Text(
+            item['text'] as String,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: isSmall ? 14 : 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -5,6 +5,8 @@ const horizontalMargin8 = SizedBox(width: 8.0);
 const horizontalMargin12 = SizedBox(width: 12.0);
 const horizontalMargin18 = SizedBox(width: 18.0);
 
+
+const verticalMargin2 =  SizedBox(height: 2.0);
 const verticalMargin4 = SizedBox(height: 4.0);
 const verticalMargin8 = SizedBox(height: 8.0);
 const verticalMargin12 = SizedBox(height: 12.0);
