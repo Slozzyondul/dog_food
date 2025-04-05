@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
           verticalMargin2,
           const ContactUs(),
           //verticalMargin16,
-          //const Spacer(),
+
           const Footer(),
         ],
       ),

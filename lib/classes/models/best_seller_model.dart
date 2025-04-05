@@ -32,7 +32,7 @@ class Product {
 
 final List<Product> products = [
   Product(
-    image: 'assets/images/real-meat.png',
+    image: 'assets/assets/images/real-meat.png',
     description: 'Product 1',
     weight: '500g',
     price: 1.00,

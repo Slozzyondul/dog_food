@@ -1,3 +1,4 @@
+import 'package:dog_food/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:dog_food/classes/cart_provider.dart';
@@ -16,15 +17,15 @@ class BestSellerWidget extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final double cardWidth = isSmall
-            ? constraints.maxWidth * 0.9
-            : constraints.maxWidth * 0.3;
+            ? constraints.maxWidth * 0.1
+            : constraints.maxWidth * 0.2;
 
-        final double cardHeight = isSmall ? 300 : 340;
+        final double cardHeight = isSmall ? 400 : 400;
 
         return SingleChildScrollView(
           padding: EdgeInsets.symmetric(
             vertical: isSmall ? 16 : 24,
-            horizontal: isSmall ? 8 : 24,
+            horizontal: isSmall ? 16 : 24,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,9 +36,9 @@ class BestSellerWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              const SizedBox(height: 12),
+              verticalMargin2,
               const Padding(
-                padding: EdgeInsets.all(16),
+                padding:allPadding16,
                 child: Text(
                   "Discover our most popular picks loved by customers – shop the Best Sellers now!",
                   textAlign: TextAlign.center,
@@ -48,7 +49,7 @@ class BestSellerWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              verticalMargin12,
               isSmall
                   // vertical list for phones
                   ? ListView.builder(
@@ -97,6 +98,7 @@ class BestSellerWidget extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Card(
+        color: Colors.white10,
         elevation: 4,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
@@ -113,7 +115,7 @@ class BestSellerWidget extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: AspectRatio(
-                    aspectRatio: 16 / 9,
+                    aspectRatio: 16 / 4,
                     child: product.image.startsWith('http')
                         ? Image.network(product.image, fit: BoxFit.cover)
                         : Image.asset(product.image, fit: BoxFit.cover),
@@ -147,7 +149,7 @@ class BestSellerWidget extends StatelessWidget {
                         fontSize: 16,
                       ),
                 ),
-                const Spacer(),
+                verticalMargin2,
                 // Add to Cart Button
                 ElevatedButton(
                   onPressed: () {
