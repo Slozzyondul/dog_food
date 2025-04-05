@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
           const SignupNowWidget(),
           verticalMargin2,
           // const BestSellerWidget(),
-          // verticalMargin32,
+          verticalMargin32,
           // const WhyUs(),
           verticalMargin2,
           const ContactUs(),
