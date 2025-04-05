@@ -27,7 +27,7 @@ class _ContactUsState extends State<ContactUs> {
     final rightColumn = _buildRightColumn(context);
 
     return Padding(
-      padding: allPadding16,
+      padding: allPadding4,
       child: isSmall && !isLandscape
           ? Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,86 +49,89 @@ class _ContactUsState extends State<ContactUs> {
   }
 
   Widget _buildLeftColumn(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Contact Us",
-          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: DogFoodAppTheme.primaryButtonColor,
+    return Padding(
+      padding: allPadding8,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Contact Us",
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: DogFoodAppTheme.primaryButtonColor,
+                ),
+          ),
+          verticalMargin8,
+          Text(
+            "If you have any questions in mind.",
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          verticalMargin8,
+          Text(
+            "Feel free to reach out to us with any questions or concerns – "
+            "we’re here to help you find the best nutrition for your pets!",
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          verticalMargin16,
+          Row(
+            children: [
+              const Icon(
+                Icons.phone,
+                size: 18,
+                color: Colors.black,
               ),
-        ),
-        verticalMargin8,
-        Text(
-          "If you have any questions in mind.",
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontWeight: FontWeight.bold,
+              horizontalMargin18,
+              Text(
+                "+254-792-352-745",
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
-        ),
-        verticalMargin8,
-        Text(
-          "Feel free to reach out to us with any questions or concerns – "
-          "we’re here to help you find the best nutrition for your pets!",
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        verticalMargin16,
-        Row(
-          children: [
-            const Icon(
-              Icons.phone,
-              size: 18,
-              color: Colors.black,
-            ),
-            horizontalMargin18,
-            Text(
-              "+254-792-352-745",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ],
-        ),
-        verticalMargin16,
-        Row(
-          children: [
-            const Icon(
-              Icons.email,
-              size: 18,
-              color: Colors.black,
-            ),
-            horizontalMargin18,
-            Text(
-              "pawske@gmail.com",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ],
-        ),
-        verticalMargin16,
-        Row(
-          children: [
-            _buildSocialButton(
-              icon: Icons.facebook,
-              url: 'https://www.facebook.com/paws.co.ke',
-            ),
-            const SizedBox(width: 8),
-            _buildSocialButton(
-              icon: Icons.camera_alt,
-              url: 'https://www.instagram.com/paws.co.ke/',
-            ),
-            const SizedBox(width: 8),
-            _buildSocialButton(
-              icon: Icons.contact_phone,
-              url: 'https://wa.me/message/UTDJXATS2FQXM1',
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+          verticalMargin16,
+          Row(
+            children: [
+              const Icon(
+                Icons.email,
+                size: 18,
+                color: Colors.black,
+              ),
+              horizontalMargin18,
+              Text(
+                "pawske@gmail.com",
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
+          ),
+          verticalMargin16,
+          Row(
+            children: [
+              _buildSocialButton(
+                icon: Icons.facebook,
+                url: 'https://www.facebook.com/paws.co.ke',
+              ),
+              const SizedBox(width: 8),
+              _buildSocialButton(
+                icon: Icons.camera_alt,
+                url: 'https://www.instagram.com/paws.co.ke/',
+              ),
+              const SizedBox(width: 8),
+              _buildSocialButton(
+                icon: Icons.contact_phone,
+                url: 'https://wa.me/message/UTDJXATS2FQXM1',
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
  
   Widget _buildRightColumn(BuildContext context) {
     return Padding(
-      padding: allPadding16,
+      padding: allPadding0,
       child: Column(
         children: [
           _buildTextField("Your Name", _nameController),
