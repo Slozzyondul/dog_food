@@ -11,6 +11,10 @@ class WhyUs extends StatefulWidget {
 class _WhyUsState extends State<WhyUs> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    final isWideScreen = screenWidth > 840;
+
     return Padding(
       padding: verticalPadding16,
       child: Column(
@@ -29,45 +33,67 @@ class _WhyUsState extends State<WhyUs> {
             textAlign: TextAlign.center,
           ),
           verticalMargin16,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildImageCard(
-                context,
-                "assets/assets/images/real-meat.png",
-                "Crafted with real meat and",
-                "natural ingredients",
-              ),
-              horizontalMargin8,
-              _buildImageCard(
-                context,
-                "assets/assets/images/affordable.png",
-                "Affordable prices without",
-                "compromising quality",
-              ),
-              horizontalMargin8,
-              _buildImageCard(
-                context,
-                "assets/assets/images/formulas.png",
-                "Tailored formulas for every",
-                "life stage",
-              ),
-            ],
-          ),
+
+          /// Layout changes here
+          isWideScreen
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: _buildCards(context, screenWidth / 4),
+                )
+              : Wrap(
+                  spacing: 16,
+                  runSpacing: 16,
+                  alignment: WrapAlignment.center,
+                  children: _buildCards(context, screenWidth * 0.7),
+                ),
         ],
       ),
     );
   }
+}
 
-  Widget _buildImageCard(
-      BuildContext context, String imagePath, String title, String subtitle) {
-    return Column(
+List<Widget> _buildCards(BuildContext context, double cardWidth) {
+  return [
+    _buildImageCard(
+      context,
+      "assets/assets/images/real-meat.png",
+      "Crafted with real meat and",
+      "natural ingredients",
+      cardWidth,
+    ),
+    _buildImageCard(
+      context,
+      "assets/assets/images/affordable.png",
+      "Affordable prices without",
+      "compromising quality",
+      cardWidth,
+    ),
+    _buildImageCard(
+      context,
+      "assets/assets/images/formulas.png",
+      "Tailored formulas for every",
+      "life stage",
+      cardWidth,
+    ),
+  ];
+}
+
+Widget _buildImageCard(
+  BuildContext context,
+  String imagePath,
+  String title,
+  String subtitle,
+  double width,
+) {
+  return SizedBox(
+    width: width,
+    child: Column(
       children: [
         Image.asset(
           imagePath,
-          height: MediaQuery.of(context).size.height * 0.1,
-          width: MediaQuery.of(context).size.width * 0.1,
-          fit: BoxFit.cover,
+          height: 80,
+          width: 80,
+          fit: BoxFit.contain,
         ),
         verticalMargin8,
         Text(
@@ -82,6 +108,6 @@ class _WhyUsState extends State<WhyUs> {
           textAlign: TextAlign.center,
         ),
       ],
-    );
-  }
+    ),
+  );
 }
