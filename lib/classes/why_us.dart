@@ -16,7 +16,7 @@ class _WhyUsState extends State<WhyUs> {
     final isWideScreen = screenWidth > 840;
 
     return Padding(
-      padding: verticalPadding16,
+      padding: verticalPadding4,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

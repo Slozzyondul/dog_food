@@ -1,10 +1,9 @@
-import 'package:dog_food/classes/cart_provider.dart';
-import 'package:dog_food/classes/models/best_seller_model.dart';
-import 'package:dog_food/constants/constants.dart';
-import 'package:dog_food/page_size/responsive_screen_helper.dart';
-import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:dog_food/classes/cart_provider.dart';
+import 'package:dog_food/classes/models/best_seller_model.dart';
+import 'package:dog_food/constants/themes.dart';
+import 'package:dog_food/page_size/responsive_screen_helper.dart';
 
 class BestSellerWidget extends StatelessWidget {
   const BestSellerWidget({super.key});
@@ -12,74 +11,77 @@ class BestSellerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSmall = ResponsiveHelper.isSmallScreen(context);
-    final isLandscape = ResponsiveHelper.isLandscape(context);
     final cartProvider = Provider.of<CartProvider>(context);
 
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: isSmall ? 16 : 24,
-        horizontal: isSmall ? 8 : 16,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            "Best Sellers",
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          verticalMargin4,
-          const Padding(
-            padding: allPadding16,
-            child: Text(
-              overflow: TextOverflow.visible,
-              "Discover our most popular picks loved by customers – shop the Best Sellers now!",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          verticalMargin4,
-          LayoutBuilder(
-            builder: (context, constraints) {
-              final cardWidth = isSmall
-                  ? constraints.maxWidth * 0.9
-                  : constraints.maxWidth * 0.45;
-              final cardHeight = isLandscape
-                  ? constraints.maxHeight * 0.8
-                  : constraints.maxHeight * 0.6;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final double cardWidth = isSmall
+            ? constraints.maxWidth * 0.9
+            : constraints.maxWidth * 0.3;
 
-              return SizedBox(
-                height: isSmall ? cardHeight * 2.2 : cardHeight * 1.2,
-                child: isSmall
-                    ? ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: products.length,
-                        itemBuilder: (context, index) => _buildProductCard(
-                            context,
-                            products[index],
-                            cartProvider,
-                            cardWidth,
-                            cardHeight),
-                      )
-                    : ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: products.length,
-                        itemBuilder: (context, index) => _buildProductCard(
-                            context,
-                            products[index],
-                            cartProvider,
-                            cardWidth,
-                            cardHeight),
-                      ),
-              );
-            },
+        final double cardHeight = isSmall ? 300 : 340;
+
+        return SingleChildScrollView(
+          padding: EdgeInsets.symmetric(
+            vertical: isSmall ? 16 : 24,
+            horizontal: isSmall ? 8 : 24,
           ),
-        ],
-      ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Best Sellers",
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(height: 12),
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  "Discover our most popular picks loved by customers – shop the Best Sellers now!",
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.visible,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              isSmall
+                  // vertical list for phones
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: products.length,
+                      itemBuilder: (context, index) => _buildProductCard(
+                        context,
+                        products[index],
+                        cartProvider,
+                        cardWidth,
+                        cardHeight,
+                      ),
+                    )
+                  // grid-style wrap for web/tablet/large screens
+                  : Wrap(
+                      spacing: 16,
+                      runSpacing: 16,
+                      alignment: WrapAlignment.center,
+                      children: products
+                          .map((product) => _buildProductCard(
+                                context,
+                                product,
+                                cartProvider,
+                                cardWidth,
+                                cardHeight,
+                              ))
+                          .toList(),
+                    ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -92,108 +94,79 @@ class BestSellerWidget extends StatelessWidget {
   ) {
     final isSmall = ResponsiveHelper.isSmallScreen(context);
 
-    return Padding(
-      padding: EdgeInsets.all(isSmall ? 8 : 12),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: Card(
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: SizedBox(
-            width: width,
-            height: height,
-            child: Padding(
-              padding: EdgeInsets.all(isSmall ? 12 : 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: AspectRatio(
-                      aspectRatio: 16 / 9,
-                      child: product.image.startsWith('http')
-                          ? Image.network(
-                              product.image,
-                              fit: BoxFit.cover,
-                            )
-                          : Image.asset(
-                              product.image,
-                              fit: BoxFit.cover,
-                            ),
-                    ),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: SizedBox(
+          width: width,
+          height: height,
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Product Image
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: product.image.startsWith('http')
+                        ? Image.network(product.image, fit: BoxFit.cover)
+                        : Image.asset(product.image, fit: BoxFit.cover),
                   ),
-                  const SizedBox(height: 12),
-                  Text(
-                    product.description,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          fontSize: ResponsiveHelper.responsiveValue(
-                            context,
-                            small: 16,
-                            large: 18,
-                          ),
-                        ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Weight: ${product.weight}",
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: ResponsiveHelper.responsiveValue(
-                            context,
-                            small: 14,
-                            large: 16,
-                          ),
-                        ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Price: Ksh ${product.price.toStringAsFixed(2)}",
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          color: DogFoodAppTheme.primaryButtonColor,
-                          fontSize: ResponsiveHelper.responsiveValue(
-                            context,
-                            small: 16,
-                            large: 18,
-                          ),
-                        ),
-                  ),
-                  const Spacer(),
-                  Center(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        cartProvider.addToCart(product.toMap());
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Added to cart")),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: isSmall ? 16 : 24,
-                          vertical: isSmall ? 8 : 12,
-                        ),
-                        backgroundColor: DogFoodAppTheme.primaryButtonColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                ),
+                const SizedBox(height: 12),
+                // Product Title
+                Text(
+                  product.description,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: isSmall ? 16 : 18,
                       ),
-                      child: Text(
-                        "Add to Cart",
-                        style: TextStyle(
-                          fontSize: ResponsiveHelper.responsiveValue(
-                            context,
-                            small: 14,
-                            large: 16,
-                          ),
-                        ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 8),
+                // Product Weight
+                Text(
+                  "Weight: ${product.weight}",
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontSize: 14,
                       ),
+                ),
+                const SizedBox(height: 8),
+                // Product Price
+                Text(
+                  "Price: Ksh ${product.price.toStringAsFixed(2)}",
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        color: DogFoodAppTheme.primaryButtonColor,
+                        fontSize: 16,
+                      ),
+                ),
+                const Spacer(),
+                // Add to Cart Button
+                ElevatedButton(
+                  onPressed: () {
+                    cartProvider.addToCart(product.toMap());
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Added to cart")),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: DogFoodAppTheme.primaryButtonColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 24, vertical: 12),
                   ),
-                ],
-              ),
+                  child: const Text("Add to Cart"),
+                ),
+              ],
             ),
           ),
         ),

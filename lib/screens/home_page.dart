@@ -1,3 +1,4 @@
+import 'package:dog_food/classes/bestSeller.dart';
 import 'package:dog_food/classes/contact_us.dart';
 import 'package:dog_food/classes/footer.dart';
 import 'package:dog_food/classes/homebanner.dart';
@@ -47,13 +48,13 @@ class _HomePageState extends State<HomePage> {
           verticalMargin2,
           const SignupNowWidget(),
           verticalMargin2,
-          // const BestSellerWidget(),
+          const BestSellerWidget(),
           verticalMargin32,
           const WhyUs(),
           verticalMargin2,
           const ContactUs(),
           //verticalMargin16,
-          const Spacer(),
+          //const Spacer(),
           const Footer(),
         ],
       ),
