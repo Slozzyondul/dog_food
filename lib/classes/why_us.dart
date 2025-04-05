@@ -29,7 +29,7 @@ class _WhyUsState extends State<WhyUs> {
           verticalMargin8,
           Text(
             "Dogs are family. At Paws Kenya, we craft premium meals and treats to keep them happy and healthy. It's not just pet food - it's about the bond you share.",
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
           verticalMargin16,
