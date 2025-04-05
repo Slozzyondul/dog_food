@@ -13,7 +13,7 @@ class HomeBannerWidget extends StatelessWidget {
     return ChildBuilder(
       builder: (context, child) {
         final size = MediaQuery.sizeOf(context);
-        final isSmallScreen = size.width < 600;
+        final isSmallScreen = size.width < 840;
         return ConstrainedBox(
           constraints: BoxConstraints(
             minHeight: isSmallScreen ? size.height * 0.25 : size.height * 0.45,
@@ -24,7 +24,7 @@ class HomeBannerWidget extends StatelessWidget {
       },
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final isSmallScreen = constraints.maxWidth < 600;
+          final isSmallScreen = constraints.maxWidth < 840;
           return DecoratedBox(
             decoration: const BoxDecoration(
               image: DecorationImage(

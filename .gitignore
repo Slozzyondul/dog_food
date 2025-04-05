@@ -42,3 +42,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+android/app/.cxx/Debug/44281m6c/arm64-v8a/configure_fingerprint.bin
+android/app/.cxx/Debug/44281m6c/arm64-v8a/configure_fingerprint.bin
+android/app/.cxx/Debug/44281m6c/arm64-v8a/configure_fingerprint.bin
+build/app/intermediates/compressed_assets/debug/out/assets/flutter_assets/kernel_blob.bin.jar
+android/app/.cxx/Debug/44281m6c/arm64-v8a/configure_fingerprint.bin
