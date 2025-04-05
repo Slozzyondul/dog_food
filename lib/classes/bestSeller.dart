@@ -17,9 +17,9 @@ class BestSellerWidget extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final double cardWidth =
-            isSmall ? constraints.maxWidth * 0.1 : constraints.maxWidth * 0.05;
+            isSmall ? constraints.maxWidth * 0.1 : constraints.maxWidth * 0.3;
 
-        final double cardHeight = isSmall ? 400 : 800;
+        final double cardHeight = isSmall ? 400 : 400;
 
         return SingleChildScrollView(
           padding: EdgeInsets.symmetric(
@@ -97,9 +97,11 @@ class BestSellerWidget extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Card(
+        
         shadowColor: DogFoodAppTheme.menuBrownColor,
-        color: DogFoodAppTheme.backgroundColor,
-        elevation: 10,
+        //color: DogFoodAppTheme.backgroundColor,
+        color: Colors.black.withOpacity(0.1),
+        elevation: 1,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -138,8 +140,9 @@ class BestSellerWidget extends StatelessWidget {
                 // Product Weight
                 Text(
                   "Weight: ${product.weight}",
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontSize: isSmall? 14 : 16,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontSize: isSmall? 16 : 18,
+                        fontWeight: FontWeight.bold,
                       ),
                 ),
                 verticalMargin2,
@@ -148,7 +151,8 @@ class BestSellerWidget extends StatelessWidget {
                   "Price: Ksh ${product.price.toStringAsFixed(2)}",
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         color: DogFoodAppTheme.primaryButtonColor,
-                        fontSize: 16,
+                        fontSize: isSmall? 16 : 18,
+                        fontWeight: FontWeight.bold,
                       ),
                 ),
                 verticalMargin24,
