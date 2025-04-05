@@ -16,11 +16,10 @@ class BestSellerWidget extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final double cardWidth = isSmall
-            ? constraints.maxWidth * 0.1
-            : constraints.maxWidth * 0.2;
+        final double cardWidth =
+            isSmall ? constraints.maxWidth * 0.1 : constraints.maxWidth * 0.05;
 
-        final double cardHeight = isSmall ? 400 : 400;
+        final double cardHeight = isSmall ? 400 : 800;
 
         return SingleChildScrollView(
           padding: EdgeInsets.symmetric(
@@ -38,18 +37,18 @@ class BestSellerWidget extends StatelessWidget {
               ),
               verticalMargin2,
               const Padding(
-                padding:allPadding16,
+                padding: allPadding16,
                 child: Text(
                   "Discover our most popular picks loved by customers – shop the Best Sellers now!",
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.visible,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.normal,
                     fontSize: 16,
                   ),
                 ),
               ),
-              verticalMargin12,
+              verticalMargin4,
               isSmall
                   // vertical list for phones
                   ? ListView.builder(
@@ -98,8 +97,9 @@ class BestSellerWidget extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Card(
-        color: Colors.white10,
-        elevation: 4,
+        shadowColor: DogFoodAppTheme.menuBrownColor,
+        color: DogFoodAppTheme.backgroundColor,
+        elevation: 10,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -107,9 +107,10 @@ class BestSellerWidget extends StatelessWidget {
           width: width,
           height: height,
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: allPadding12,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Product Image
                 ClipRRect(
@@ -118,29 +119,30 @@ class BestSellerWidget extends StatelessWidget {
                     aspectRatio: 16 / 4,
                     child: product.image.startsWith('http')
                         ? Image.network(product.image, fit: BoxFit.cover)
-                        : Image.asset(product.image, fit: BoxFit.cover),
+                        : Image.asset(product.image, fit: BoxFit.contain),
                   ),
                 ),
-                const SizedBox(height: 12),
+
+                verticalMargin2,
                 // Product Title
                 Text(
                   product.description,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
-                        fontSize: isSmall ? 16 : 18,
+                        fontSize: isSmall ? 18 : 28,
                       ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 8),
+                verticalMargin2,
                 // Product Weight
                 Text(
                   "Weight: ${product.weight}",
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontSize: 14,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        fontSize: isSmall? 14 : 16,
                       ),
                 ),
-                const SizedBox(height: 8),
+                verticalMargin2,
                 // Product Price
                 Text(
                   "Price: Ksh ${product.price.toStringAsFixed(2)}",
@@ -149,7 +151,7 @@ class BestSellerWidget extends StatelessWidget {
                         fontSize: 16,
                       ),
                 ),
-                verticalMargin2,
+                verticalMargin24,
                 // Add to Cart Button
                 ElevatedButton(
                   onPressed: () {

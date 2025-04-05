@@ -53,8 +53,7 @@ class _HomePageState extends State<HomePage> {
           const WhyUs(),
           verticalMargin2,
           const ContactUs(),
-          //verticalMargin16,
-
+          verticalMargin16,
           const Footer(),
         ],
       ),
