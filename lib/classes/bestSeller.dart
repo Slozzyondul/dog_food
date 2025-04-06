@@ -104,7 +104,6 @@ class BestSellerWidget extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: Card(
         shadowColor: DogFoodAppTheme.menuBrownColor,
-        //color: DogFoodAppTheme.backgroundColor,
         color: Colors.black.withOpacity(0.1),
         elevation: 1,
         shape: RoundedRectangleBorder(
