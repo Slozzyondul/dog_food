@@ -17,7 +17,8 @@ class BestSellerWidget extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final double cardWidth =
-            isSmall ? constraints.maxWidth * 0.1 : constraints.maxWidth * 0.3;
+            isSmall ? MediaQuery.of(context).size.width * 0.8 : 300;
+        //isSmall ? constraints.maxWidth * 0.1 : constraints.maxWidth * 0.3;
 
         final double cardHeight = isSmall ? 400 : 400;
 
@@ -50,17 +51,22 @@ class BestSellerWidget extends StatelessWidget {
               ),
               verticalMargin4,
               isSmall
-                  // vertical list for phones
-                  ? ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: products.length,
-                      itemBuilder: (context, index) => _buildProductCard(
-                        context,
-                        products[index],
-                        cartProvider,
-                        cardWidth,
-                        cardHeight,
+                  // carousel for phones
+                  ? SizedBox(
+                      height: cardHeight + 40, // extra room for buttons/text
+                      child: PageView.builder(
+                        itemCount: products.length,
+                        controller: PageController(viewportFraction: 0.85),
+                        itemBuilder: (context, index) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: _buildProductCard(
+                            context,
+                            products[index],
+                            cartProvider,
+                            cardWidth,
+                            cardHeight,
+                          ),
+                        ),
                       ),
                     )
                   // grid-style wrap for web/tablet/large screens
@@ -97,7 +103,6 @@ class BestSellerWidget extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: Card(
-        
         shadowColor: DogFoodAppTheme.menuBrownColor,
         //color: DogFoodAppTheme.backgroundColor,
         color: Colors.black.withOpacity(0.1),
@@ -141,7 +146,7 @@ class BestSellerWidget extends StatelessWidget {
                 Text(
                   "Weight: ${product.weight}",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontSize: isSmall? 16 : 18,
+                        fontSize: isSmall ? 16 : 18,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
@@ -151,7 +156,7 @@ class BestSellerWidget extends StatelessWidget {
                   "Price: Ksh ${product.price.toStringAsFixed(2)}",
                   style: Theme.of(context).textTheme.titleSmall?.copyWith(
                         color: DogFoodAppTheme.primaryButtonColor,
-                        fontSize: isSmall? 16 : 18,
+                        fontSize: isSmall ? 16 : 18,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
