@@ -32,45 +32,57 @@ class Product {
 
 final List<Product> products = [
   Product(
-    image: 'assets/assets/images/real-meat.png',
+    image: 'assets/assets/images/1.png',
     description: 'Product 1',
     weight: '500g',
     price: 1.00,
   ),
   Product(
-    image: 'assets/assets/images/affordable.png',
+    image: 'assets/assets/images/2.png',
     description: 'Product 2',
     weight: '1kg',
     price: 2.00,
   ),
   Product(
-    image: 'assets/assets/images/banner1.png',
+    image: 'assets/assets/images/3.png',
     description: 'Product 3',
     weight: '750g',
     price: 3.00,
   ),
   Product(
-    image: 'assets/assets/images/chicken-kibble.png',
+    image: 'assets/assets/images/4.png',
     description: 'Product 4',
     weight: '500g',
     price: 700.00,
   ),
   Product(
-    image: 'assets/assets/images/lamb-kibble.png',
+    image: 'assets/assets/images/5.png',
     description: 'Product 5',
     weight: '1kg',
     price: 1800.00,
   ),
   Product(
-    image: 'assets/assets/images/real-meat.png',
+    image: 'assets/assets/images/6.png',
     description: 'Product 6',
     weight: '750g',
     price: 1500.00,
   ),
-  Product(
-    image: 'assets/assets/images/affordable.png',
-    description: 'Product 7',
-    weight: '500g',
-    price: 350.00,
-  ),
+  // Product(
+  //   image: 'assets/assets/images/7.png',
+  //   description: 'Product 7',
+  //   weight: '500g',
+  //   price: 350.00,
+  // ),
+  // Product(
+  //   image: 'assets/assets/images/8.png',
+  //   description: 'Product 8',
+  //   weight: '500g',
+  //   price: 350.00,
+  // ),
+  // Product(
+  //   image: 'assets/assets/images/9.png',
+  //   description: 'Product 9',
+  //   weight: '500g',
+  //   price: 350.00,
+  // ),
 ];

@@ -56,21 +56,21 @@ List<Widget> _buildCards(BuildContext context, double cardWidth) {
   return [
     _buildImageCard(
       context,
-      "assets/assets/images/real-meat.png",
+      "assets/assets/images/8.png",
       "Crafted with real meat and",
       "natural ingredients",
       cardWidth,
     ),
     _buildImageCard(
       context,
-      "assets/assets/images/affordable.png",
+      "assets/assets/images/7.png",
       "Affordable prices without",
       "compromising quality",
       cardWidth,
     ),
     _buildImageCard(
       context,
-      "assets/assets/images/formulas.png",
+      "assets/assets/images/9.png",
       "Tailored formulas for every",
       "life stage",
       cardWidth,
