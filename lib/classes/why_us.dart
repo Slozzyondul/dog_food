@@ -31,6 +31,7 @@ class _WhyUsState extends State<WhyUs> {
             "Dogs are family. At Paws Kenya, we craft premium meals and treats to keep them happy and healthy. It's not just pet food - it's about the bond you share.",
             style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
+            overflow: TextOverflow.visible,
           ),
           verticalMargin16,
 
@@ -98,13 +99,13 @@ Widget _buildImageCard(
         verticalMargin8,
         Text(
           title,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: Theme.of(context).textTheme.bodyLarge,
           textAlign: TextAlign.center,
         ),
         verticalMargin4,
         Text(
           subtitle,
-          style: Theme.of(context).textTheme.bodySmall,
+          style: Theme.of(context).textTheme.bodyLarge,
           textAlign: TextAlign.center,
         ),
       ],
