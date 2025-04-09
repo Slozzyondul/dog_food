@@ -134,8 +134,8 @@ class BestSellerWidget extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                       colors: [
                         Colors.transparent,
                         Colors.black.withOpacity(0.7),
