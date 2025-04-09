@@ -91,31 +91,34 @@ class BestSellerWidget extends StatelessWidget {
     );
   }
 
+  
   Widget _buildProductCard(
-    BuildContext context,
-    Product product,
-    CartProvider cartProvider,
-    double width,
-    double height,
-  ) {
-    final isSmall = ResponsiveHelper.isSmallScreen(context);
+  BuildContext context,
+  Product product,
+  CartProvider cartProvider,
+  double width,
+  double height,
+) {
+  final isSmall = ResponsiveHelper.isSmallScreen(context);
 
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: Card(
-        shadowColor: DogFoodAppTheme.menuBrownColor,
-        elevation: 4,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: SizedBox(
-          width: width,
-          height: height,
-          child: Stack(
+  return MouseRegion(
+    cursor: SystemMouseCursors.click,
+    child: Card(
+      shadowColor: DogFoodAppTheme.menuBrownColor,
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: SizedBox(
+        width: width,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Background Image
-              Positioned.fill(
+              // 🐶 Image on top
+              AspectRatio(
+                aspectRatio: 1,
                 child: product.image.startsWith('http')
                     ? Image.network(
                         product.image,
@@ -128,100 +131,71 @@ class BestSellerWidget extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
               ),
-
-              // Dark overlay for better text visibility
-              Positioned.fill(
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                        Colors.transparent,
-                        Colors.black.withOpacity(0.7),
-                      ],
-                      stops: const [0.5, 1.0],
-                    ),
-                  ),
-                ),
-              ),
-
-              // Content
-              Center(
-                child: Padding(
-                  padding: allPadding8,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      // Product Title
-                      Text(
-                        product.description,
-                        style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: isSmall ? 16 : 18,
-                                  color: Colors.black,
-                                ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-
-                      verticalMargin2,
-
-                      // Product Weight
-                      Text(
-                        "Weight: ${product.weight}",
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontSize: isSmall ? 14 : 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                      ),
-
-                      verticalMargin2,
-
-                      // Product Price
-                      Text(
-                        "Price: Ksh ${product.price.toStringAsFixed(2)}",
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                              color: DogFoodAppTheme.primaryButtonColor,
-                              fontSize: isSmall ? 14 : 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-
-                      verticalMargin2,
-                      // Add to Cart Button
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.3,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            cartProvider.addToCart(product.toMap());
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text("Added to cart")),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: DogFoodAppTheme.primaryButtonColor,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 24, vertical: 12),
+          
+              // 📝 Product Info below image
+              Padding(
+                padding: allPadding8,
+                child: Column(
+                  children: [
+                    Text(
+                      product.description,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: isSmall ? 16 : 18,
+                            color: Colors.black,
                           ),
-                          child: const Text("Add to Cart"),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    verticalMargin2,
+                    Text(
+                      "Weight: ${product.weight}",
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontSize: isSmall ? 14 : 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                    ),
+                    verticalMargin2,
+                    Text(
+                      "Price: Ksh ${product.price.toStringAsFixed(2)}",
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            color: DogFoodAppTheme.primaryButtonColor,
+                            fontSize: isSmall ? 14 : 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    verticalMargin2,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          cartProvider.addToCart(product.toMap());
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Added to cart")),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: DogFoodAppTheme.primaryButtonColor,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 12),
                         ),
+                        child: const Text("Add to Cart"),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }
