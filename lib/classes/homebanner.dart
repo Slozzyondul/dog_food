@@ -34,7 +34,7 @@ class HomeBannerWidget extends StatelessWidget {
               ),
             ),
             child: Container(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.transparent,
               //color: DogFoodAppTheme.backgroundColor,
               padding: EdgeInsets.symmetric(
                 vertical: isSmallScreen ? 16 : 4,
