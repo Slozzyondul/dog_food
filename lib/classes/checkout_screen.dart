@@ -17,9 +17,9 @@ class CheckoutScreen extends StatefulWidget {
 class _CheckoutScreenState extends State<CheckoutScreen> {
   Future<void> _checkout(double totalAmount, String phoneNumber) async {
     //live environment
-    const url = "https://slozzy.pythonanywhere.com/pay"; 
+    const url = "https://slozzy.pythonanywhere.com/pay";
     //local environment test
-    //const url = "http://127.0.0.1:5000/pay"; 
+    //const url = "http://127.0.0.1:5000/pay";
 
     try {
       final response = await http.post(
@@ -41,9 +41,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(
-                  "Payment failed: ${data["error"] ?? "Unknown error"}")),
+          SnackBar(content: Text("Payment failed: ${data["error"] ?? "Unknown error"}")),
         );
       }
     } catch (e) {
@@ -105,6 +103,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               itemBuilder: (context, index) {
                 final product = cartProvider.cartItems[index];
                 return ListTile(
+                  leading: product['image'].toString().startsWith('http')
+                      ? Image.network(
+                          product['image'],
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, StackTrace) =>
+                              const Icon(Icons.broken_image),
+                        )
+                      : Image.asset(
+                          product['image'],
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
                   title: Text(product['description']),
                   subtitle: Text("Price: ${product['price']}"),
                   trailing: IconButton(
@@ -130,8 +143,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () =>
-                      _showPhoneNumberDialog(cartProvider.totalAmount),
+                  onPressed: () => _showPhoneNumberDialog(cartProvider.totalAmount),
                   child: const Text("Pay with M-Pesa"),
                 ),
               ],
