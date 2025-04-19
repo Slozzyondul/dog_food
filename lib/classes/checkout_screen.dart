@@ -86,12 +86,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     );
   }
 
-  void _startCardPayment(double totalAmount) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Card payment coming soon...")),
-    );
-    // TODO: Call backend to create Stripe payment intent and confirm payment
-  }
+  // void _startCardPayment(double totalAmount) {
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     const SnackBar(content: Text("Card payment coming soon...")),
+  //   );
+  //   // TODO: Call backend to create Stripe payment intent and confirm payment
+  // }
 
   void _startPayPalPayment(double totalAmount) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -170,16 +170,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   onPressed: () => _startPayPalPayment(cartProvider.totalAmount),
                   child: const Text("Pay with PayPal"),
                 ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: horizontalPadding24 + verticalPadding8,
-                    backgroundColor: DogFoodAppTheme.primaryButtonColor,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                  ),
-                  onPressed: () => _startCardPayment(cartProvider.totalAmount),
-                  child: const Text("Pay with Mastercard / Visa"),
-                ),
+                // const SizedBox(height: 10),
+                // ElevatedButton(
+                //   style: ElevatedButton.styleFrom(
+                //     padding: horizontalPadding24 + verticalPadding8,
+                //     backgroundColor: DogFoodAppTheme.primaryButtonColor,
+                //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                //   ),
+                //   onPressed: () => _startCardPayment(cartProvider.totalAmount),
+                //   child: const Text("Pay with Mastercard / Visa"),
+                // ),
               ],
             ),
           ),
