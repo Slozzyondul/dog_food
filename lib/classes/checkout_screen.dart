@@ -119,7 +119,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           fit: BoxFit.cover,
                         ),
                   title: Text(product['description']),
-                  subtitle: Text("Price: ${product['price']}"),
+                  subtitle: Text("Price: ${product['price']} \nWeight: ${product['weight']}"),
                   trailing: IconButton(
                     icon: const Icon(Icons.remove_circle),
                     onPressed: () => cartProvider.removeFromCart(index),
