@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dog_food/constants/constants.dart';
 import 'package:dog_food/constants/themes.dart';
 import 'package:flutter/material.dart';
@@ -18,34 +17,37 @@ class CheckoutScreen extends StatefulWidget {
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
   final currencySymbol = NumberFormat.simpleCurrency(name: "KES").currencySymbol;
+  final _phoneNumberController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  bool _isProcessingPayment = false;
 
-  Future<void> _checkout(double totalAmount, String phoneNumber) async {
-    if (!RegExp(r'^2547\d{8}$').hasMatch(phoneNumber)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Invalid phone number. Use format: 2547XXXXXXXX")),
-      );
-      return;
-    }
-    showDialog(
-      context: context,
-      barrierDismissible: true,
-      builder: (context) => const Center(child: CircularProgressIndicator()),
-    );
+  @override
+  void dispose() {
+    _phoneNumberController.dispose();
+    super.dispose();
+  }
 
-//live environment
-    const url = "https://slozzy.pythonanywhere.com/pay";
-    //local environment test
-    //const url = "http://127.0.0.1:5000/pay";
+  Future<void> _processMpesaPayment(double totalAmount, String phoneNumber) async {
+    if (!mounted) return;
+
+    setState(() => _isProcessingPayment = true);
 
     try {
-      final response = await http.post(
-        Uri.parse(url),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode({
-          "phone_number": phoneNumber,
-          "amount": totalAmount,
-        }),
-      );
+      // Live environment
+      const url = "https://slozzy.pythonanywhere.com/pay";
+      // Local test environment
+      // const url = "http://127.0.0.1:5000/pay";
+
+      final response = await http
+          .post(
+            Uri.parse(url),
+            headers: {"Content-Type": "application/json"},
+            body: jsonEncode({
+              "phone_number": phoneNumber,
+              "amount": totalAmount,
+            }),
+          )
+          .timeout(const Duration(seconds: 30));
 
       final data = jsonDecode(response.body);
 
@@ -55,6 +57,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Payment initiated successfully!")),
         );
+        // Optionally clear cart after successful payment
+        Provider.of<CartProvider>(context, listen: false).clearCart();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Payment failed: ${data["error"] ?? "Unknown error"}")),
@@ -63,37 +67,86 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error: $e")),
+        SnackBar(content: Text("Error: ${e.toString()}")),
       );
+    } finally {
+      if (mounted) {
+        setState(() => _isProcessingPayment = false);
+      }
     }
   }
 
-  Future<void> _showPhoneNumberDialog(double totalAmount) async {
-    final phoneNumberController = TextEditingController();
-
+  Future<void> _showPaymentMethodDialog(double totalAmount) async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false, // User must tap a button to close the dialog
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Enter Phone Number'),
-          content: TextField(
-            controller: phoneNumberController,
-            decoration: const InputDecoration(hintText: "2547XXXXXXXX"),
-            keyboardType: TextInputType.phone,
-          ),
-          actions: <Widget>[
+          title: Text('Pay $currencySymbol${totalAmount.toStringAsFixed(2)}'),
+          content: const Text('Choose your payment method'),
+          actions: [
             TextButton(
-              child: const Text('Cancel'),
+              child: const Text('M-Pesa'),
               onPressed: () {
                 Navigator.of(context).pop();
+                _showMpesaPhoneNumberDialog(totalAmount);
               },
             ),
             TextButton(
-              child: const Text('Proceed'),
+              child: const Text('PayPal'),
               onPressed: () {
                 Navigator.of(context).pop();
-                _checkout(totalAmount, phoneNumberController.text);
+                _showPaypalConfirmation(totalAmount);
+              },
+            ),
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showMpesaPhoneNumberDialog(double totalAmount) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Enter M-Pesa Phone Number'),
+          content: Form(
+            key: _formKey,
+            child: TextFormField(
+              controller: _phoneNumberController,
+              decoration: const InputDecoration(
+                hintText: "2547XXXXXXXX",
+                labelText: "Phone Number",
+              ),
+              keyboardType: TextInputType.phone,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter phone number';
+                }
+                if (!RegExp(r'^254[17]\d{8}$').hasMatch(value)) {
+                  return 'Enter valid Kenyan number (2547XXXXXXXX)';
+                }
+                return null;
+              },
+            ),
+          ),
+          actions: [
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            TextButton(
+              child: const Text('Pay'),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  Navigator.of(context).pop();
+                  _processMpesaPayment(totalAmount, _phoneNumberController.text);
+                }
               },
             ),
           ],
@@ -102,9 +155,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     );
   }
 
-// paypal mehod
-
-  void _startPayPalPayment(double totalAmount) {
+  void _processPayPalPayment(double totalAmount) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => UsePaypal(
@@ -143,18 +194,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           onSuccess: (Map params) async {
             debugPrint("PayPal Success: $params");
             if (!mounted) return;
+            Provider.of<CartProvider>(context, listen: false).clearCart();
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("Payment successful!")),
             );
           },
           onError: (error) {
             debugPrint("PayPal Error: $error");
+            if (!mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("Payment error occurred.")),
             );
           },
           onCancel: () {
             debugPrint("PayPal Cancelled");
+            if (!mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("Payment cancelled.")),
             );
@@ -164,27 +218,23 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     );
   }
 
-  Future<void> _showPaypalDialog(double totalAmount) async {
+  Future<void> _showPaypalConfirmation(double totalAmount) async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Pay with PayPal'),
-          content: Text(
-              'Proceed to PayPal to complete the payment of \$${totalAmount.toStringAsFixed(2)}?'),
-          actions: <Widget>[
+          title: const Text('Confirm PayPal Payment'),
+          content: Text('Proceed to pay \$${totalAmount.toStringAsFixed(2)} via PayPal?'),
+          actions: [
             TextButton(
               child: const Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+              onPressed: () => Navigator.of(context).pop(),
             ),
             TextButton(
-              child: const Text('Proceed'),
+              child: const Text('Confirm'),
               onPressed: () {
-                Navigator.of(context).pop(); // Close dialog first
-                _startPayPalPayment(totalAmount); // Now kick off PayPal flow
+                Navigator.of(context).pop();
+                _processPayPalPayment(totalAmount);
               },
             ),
           ],
@@ -193,41 +243,56 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     );
   }
 
-// //stripe payment method
-//   Future<void> _showStripeDialog(double totalAmount) async {
-//     return showDialog<void>(
-//       context: context,
-//       barrierDismissible: true,
-//       builder: (BuildContext context) {
-//         return AlertDialog(
-//           title: const Text('Stripe Payment'),
-//           content: Text('Proceed to pay \$${totalAmount.toStringAsFixed(2)} using Stripe?'),
-//           actions: <Widget>[
-//             TextButton(
-//               child: const Text('Cancel'),
-//               onPressed: () {
-//                 Navigator.of(context).pop();
-//               },
-//             ),
-//             TextButton(
-//               child: const Text('Proceed'),
-//               onPressed: () {
-//                 Navigator.of(context).pop();
-//                 // TODO: Call backend to create Stripe payment intent and confirm payment
-//                 ScaffoldMessenger.of(context).showSnackBar(
-//                   const SnackBar(content: Text('Processing Stripe payment...')),
-//                 );
-//               },
-//             ),
-//           ],
-//         );
-//       },
-//     );
-//   }
+  Widget _buildCartItem(Map<String, dynamic> product, int index, CartProvider cartProvider) {
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      child: ListTile(
+        leading: product['image'].toString().startsWith('http')
+            ? Image.network(
+                product['image'],
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image),
+              )
+            : Image.asset(
+                product['image'],
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+              ),
+        title: Text(product['description']),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Price: $currencySymbol${product['price']}"),
+            if (product['weight'] != null) Text("Weight: ${product['weight']}"),
+          ],
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.remove_circle, color: Colors.red),
+          onPressed: () => cartProvider.removeFromCart(index),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPaymentButton(String text, VoidCallback? onPressed) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: horizontalPadding24 + verticalPadding8,
+        backgroundColor: DogFoodAppTheme.primaryButtonColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      onPressed: onPressed,
+      child: Text(text),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
+    final totalAmount = cartProvider.totalAmount;
 
     return Scaffold(
       appBar: AppBar(
@@ -237,80 +302,34 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-              itemCount: cartProvider.cartItems.length,
-              itemBuilder: (context, index) {
-                final product = cartProvider.cartItems[index];
-                return ListTile(
-                  leading: product['image'].toString().startsWith('http')
-                      ? Image.network(
-                          product['image'],
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, StackTrace? StackTrace) =>
-                              const Icon(Icons.broken_image),
-                        )
-                      : Image.asset(
-                          product['image'],
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                  title: Text(product['description']),
-                  subtitle: Text("Price: ${product['price']} \nWeight: ${product['weight']}"),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.remove_circle),
-                    onPressed: () => cartProvider.removeFromCart(index),
+            child: cartProvider.cartItems.isEmpty
+                ? const Center(child: Text("Your cart is empty"))
+                : ListView.builder(
+                    itemCount: cartProvider.cartItems.length,
+                    itemBuilder: (context, index) => _buildCartItem(
+                      cartProvider.cartItems[index],
+                      index,
+                      cartProvider,
+                    ),
                   ),
-                );
-              },
-            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                Text("Total: KES ${cartProvider.totalAmount}",
-                    style: const TextStyle(fontSize: 20)),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: horizontalPadding24 + verticalPadding8,
-                    backgroundColor: DogFoodAppTheme.primaryButtonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: cartProvider.totalAmount > 0
-                      ? () => _showPhoneNumberDialog(cartProvider.totalAmount)
-                      : null,
-
-                  // onPressed: () => _showPhoneNumberDialog(cartProvider.totalAmount),
-                  child: const Text("Pay with M-Pesa"),
+                Text(
+                  "Total: $currencySymbol${totalAmount.toStringAsFixed(2)}",
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: horizontalPadding24 + verticalPadding8,
-                    backgroundColor: DogFoodAppTheme.primaryButtonColor,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                  ),
-                  onPressed: cartProvider.totalAmount > 0
-                      ? () => _showPaypalDialog(cartProvider.totalAmount)
-                      : null,
-                  child: const Text("Pay with PayPal"),
+                const SizedBox(height: 16),
+                _buildPaymentButton(
+                  'Proceed to Payment',
+                  totalAmount > 0 ? () => _showPaymentMethodDialog(totalAmount) : null,
                 ),
-                // const SizedBox(height: 10),
-                // ElevatedButton(
-                //   style: ElevatedButton.styleFrom(
-                //     padding: horizontalPadding24 + verticalPadding8,
-                //     backgroundColor: DogFoodAppTheme.primaryButtonColor,
-                //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                //   ),
-                //   onPressed: () => _startCardPayment(cartProvider.totalAmount),
-                //   child: const Text("Pay with Mastercard / Visa"),
-                // ),
+                if (_isProcessingPayment) ...[
+                  const SizedBox(height: 16),
+                  const CircularProgressIndicator(),
+                ],
               ],
             ),
           ),
