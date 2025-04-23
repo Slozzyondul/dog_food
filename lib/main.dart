@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:mpesa_flutter_plugin/initializer.dart';
 import 'package:provider/provider.dart';
 import 'package:google_sign_in/google_sign_in.dart'; // Add this import
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
   // Initialize Google Sign-In
@@ -25,8 +27,11 @@ void main() {
   MpesaFlutterPlugin.setConsumerSecret(kConsumerSecret);
 
   // Ensure Flutter binding is initialized
-  WidgetsFlutterBinding.ensureInitialized();   
-
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize WebView for Android
+  if (WebViewPlatform.instance is! AndroidWebViewPlatform) {
+    WebViewPlatform.instance = AndroidWebViewPlatform();
+  }
   // Set system UI mode
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 

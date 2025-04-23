@@ -22,6 +22,8 @@ dependencies:
   flutter_paypal_payment: ^1.0.8
   flutter_paypal: ^0.2.1
   intl: ^0.17.0
+  webview_flutter: ^4.9.0
+  webview_flutter_android: ^3.16.9
 
 dev_dependencies:
   flutter_test:

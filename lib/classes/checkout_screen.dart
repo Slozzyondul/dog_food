@@ -112,7 +112,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           clientId:
               "AX6P1vJ75eNqQz08mGQLee4_DYIkFDtmxD_thZSmvJ55ByeUtiozFc5D5FK9DM4unXBLZ05h-cAFK2K5",
           secretKey:
-              "AX6P1vJ75eNqQz08mGQLee4_DYIkFDtmxD_thZSmvJ55ByeUtiozFc5D5FK9DM4unXBLZ05h-cAFK2K5",
+              "EGHg19ko_SzK__6mL2yuouGZXz51gpaQlWXuhPUXlNhOwJydA_DwquRSWlfXXr7j3Pwf6it8IgMq0ksF",
           returnURL: "success.snippetcoder.com",
           cancelURL: "cancel.snippetcoder.com",
           transactions: [
