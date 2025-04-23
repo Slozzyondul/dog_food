@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'cart_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_paypal/flutter_paypal.dart';
+import 'package:intl/intl.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -16,6 +17,8 @@ class CheckoutScreen extends StatefulWidget {
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
+  final currencySymbol = NumberFormat.simpleCurrency(name: "KES").currencySymbol;
+
   Future<void> _checkout(double totalAmount, String phoneNumber) async {
     if (!RegExp(r'^2547\d{8}$').hasMatch(phoneNumber)) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -25,7 +28,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     }
     showDialog(
       context: context,
-      barrierDismissible: false,
+      barrierDismissible: true,
       builder: (context) => const Center(child: CircularProgressIndicator()),
     );
 
@@ -279,7 +282,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onPressed: () => _showPhoneNumberDialog(cartProvider.totalAmount),
+                  onPressed: cartProvider.totalAmount > 0
+                      ? () => _showPhoneNumberDialog(cartProvider.totalAmount)
+                      : null,
+
+                  // onPressed: () => _showPhoneNumberDialog(cartProvider.totalAmount),
                   child: const Text("Pay with M-Pesa"),
                 ),
                 const SizedBox(height: 10),
@@ -289,7 +296,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     backgroundColor: DogFoodAppTheme.primaryButtonColor,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   ),
-                  onPressed: () => _showPaypalDialog(cartProvider.totalAmount),
+                  onPressed: cartProvider.totalAmount > 0
+                      ? () => _showPaypalDialog(cartProvider.totalAmount)
+                      : null,
                   child: const Text("Pay with PayPal"),
                 ),
                 // const SizedBox(height: 10),
