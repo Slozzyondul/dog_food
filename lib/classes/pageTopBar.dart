@@ -23,18 +23,6 @@ class PageTopBar extends StatelessWidget {
         color: DogFoodAppTheme.themeBrownColor,
         child: Row(
           children: [
-            Padding(
-              padding: allPadding8,
-              child: GestureDetector(
-                onTap: () {},
-                child: SizedBox.square(
-                  dimension: 48,
-                  child: Image.asset(
-                    "assets/assets/images/logo.png",
-                  ),
-                ),
-              ),
-            ),
             if (!isSmallScreen)
               Expanded(
                 child: Wrap(
@@ -97,7 +85,7 @@ class PageTopBar extends StatelessWidget {
                 child: Padding(
                   padding: allPadding4,
                   child: Align(
-                    alignment: Alignment.centerRight,
+                    alignment: Alignment.centerLeft,
                     child: IconButton(
                       onPressed: () {
                         scaffoldKey.currentState?.openEndDrawer();
@@ -110,6 +98,18 @@ class PageTopBar extends StatelessWidget {
                   ),
                 ),
               ),
+            Padding(
+              padding: allPadding8,
+              child: GestureDetector(
+                onTap: () {},
+                child: SizedBox.square(
+                  dimension: 48,
+                  child: Image.asset(
+                    "assets/assets/images/logo.png",
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
