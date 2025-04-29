@@ -230,7 +230,7 @@
             "outputFile": "com.example.dog_food.app-merged_res-34:/values-night-v8_values-night-v8.arsc.flat",
             "map": [
                 {
-                    "source": "/home/solo/Documents/projects/matt/dog_food/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/home/solo/Documents/dog_food/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -2996,25 +2996,6 @@
                     }
                 },
                 {
-                    "source": "/home/solo/Documents/projects/matt/dog_food/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "173,818",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "476,982"
-                    },
-                    "to": {
-                        "startLines": "1498,1502",
-                        "startColumns": "4,4",
-                        "startOffsets": "95366,95547",
-                        "endLines": "1501,1504",
-                        "endColumns": "12,12",
-                        "endOffsets": "95542,95711"
-                    }
-                },
-                {
                     "source": "/home/solo/.gradle/caches/transforms-3/1a31ed6beec5853d4337bc966befdddc/transformed/jetified-activity-1.8.1/res/values/values.xml",
                     "from": {
                         "startLines": "2,3",
@@ -3214,7 +3195,7 @@
                     }
                 },
                 {
-                    "source": "/home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/packaged_res/debug/values/values.xml",
+                    "source": "/home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/packaged_res/debug/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,11,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4",
@@ -3230,6 +3211,25 @@
                         "endLines": "366,367,368,369,370,401,411,1497,1842",
                         "endColumns": "46,50,56,48,46,46,12,12,12",
                         "endOffsets": "22187,22238,22295,22344,22391,25648,26287,95361,121446"
+                    }
+                },
+                {
+                    "source": "/home/solo/Documents/dog_food/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "173,818",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "476,982"
+                    },
+                    "to": {
+                        "startLines": "1498,1502",
+                        "startColumns": "4,4",
+                        "startOffsets": "95366,95547",
+                        "endLines": "1501,1504",
+                        "endColumns": "12,12",
+                        "endOffsets": "95542,95711"
                     }
                 },
                 {

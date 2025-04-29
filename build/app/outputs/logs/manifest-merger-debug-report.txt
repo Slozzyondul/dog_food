@@ -1,11 +1,11 @@
 -- Merging decision tree log ---
 application
-INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:2:5-33:19
-INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
-MERGED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-46:19
-MERGED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-46:19
-MERGED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-12:19
-MERGED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-12:19
+INJECTED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:2:5-33:19
+INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
+MERGED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-46:19
+MERGED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-46:19
+MERGED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-12:19
 MERGED from [androidx.window:window:1.2.0] /home/solo/.gradle/caches/transforms-3/14b9b4b67c49a3b06f1f5d79b779b793/transformed/jetified-window-1.2.0/AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.window:window:1.2.0] /home/solo/.gradle/caches/transforms-3/14b9b4b67c49a3b06f1f5d79b779b793/transformed/jetified-window-1.2.0/AndroidManifest.xml:22:5-29:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] /home/solo/.gradle/caches/transforms-3/8406125a28d11e893c43fc2e43575a72/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
@@ -31,23 +31,23 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /home/solo/.gradle/caches/t
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/solo/.gradle/caches/transforms-3/c4cb15b745360b00abdacd450e903bdf/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/solo/.gradle/caches/transforms-3/c4cb15b745360b00abdacd450e903bdf/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 	android:extractNativeLibs
-		INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] /home/solo/.gradle/caches/transforms-3/6de47aff09eaa46e79b932a1a5800433/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
 	android:name
-		INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml
+		INJECTED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml
 manifest
-ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:1:1-45:12
-MERGED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:1:1-45:12
-INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml:1:1-7:12
-INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml:1:1-7:12
-INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml:1:1-7:12
-MERGED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-48:12
+ADDED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:1:1-45:12
+MERGED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:1:1-45:12
+INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml:1:1-7:12
+MERGED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-48:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/solo/.gradle/caches/transforms-3/6efee829cec19414b5a84b01cbaaeffe/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] /home/solo/.gradle/caches/transforms-3/a47a73cef347769015f693527f995a2f/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
-MERGED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-14:12
-MERGED from [:google_sign_in_android] /home/solo/Documents/projects/matt/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:webview_flutter_android] /home/solo/Documents/projects/matt/dog_food/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-14:12
+MERGED from [:google_sign_in_android] /home/solo/Documents/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:webview_flutter_android] /home/solo/Documents/dog_food/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.webkit:webkit:1.12.0] /home/solo/.gradle/caches/transforms-3/2a56b7183ab6cf20fe63a3ca49e7811b/transformed/webkit-1.12.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.browser:browser:1.8.0] /home/solo/.gradle/caches/transforms-3/7b043be59d5e08fc8e1af9bd04a36b48/transformed/browser-1.8.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.1.0] /home/solo/.gradle/caches/transforms-3/928e8c05b024e608e298b99cd785f235/transformed/swiperefreshlayout-1.1.0/AndroidManifest.xml:17:1-24:12
@@ -89,49 +89,49 @@ MERGED from [androidx.arch.core:core-runtime:2.2.0] /home/solo/.gradle/caches/tr
 MERGED from [androidx.window.extensions.core:core:1.0.0] /home/solo/.gradle/caches/transforms-3/25dd1a8b6b04274ce32cfed650e395a3/transformed/jetified-core-1.0.0/AndroidManifest.xml:2:1-7:12
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/solo/.gradle/caches/transforms-3/23570485ac622284e84b3d3601d194f1/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:2:1-7:12
 	package
-		INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:1:11-69
 queries
-ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:39:5-44:15
-MERGED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-11:15
-MERGED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-11:15
+ADDED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:39:5-44:15
+MERGED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-11:15
+MERGED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-11:15
 intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:40:9-43:18
+ADDED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:40:9-43:18
 action#android.intent.action.PROCESS_TEXT
-ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:41:13-72
+ADDED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:41:13-72
 	android:name
-		ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:41:21-70
+		ADDED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:41:21-70
 data
-ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:42:13-50
+ADDED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:42:13-50
 	android:mimeType
-		ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/main/AndroidManifest.xml:42:19-48
+		ADDED from /home/solo/Documents/dog_food/android/app/src/main/AndroidManifest.xml:42:19-48
 uses-permission#android.permission.INTERNET
-ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml:6:5-66
-MERGED from [:google_sign_in_android] /home/solo/Documents/projects/matt/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-67
-MERGED from [:google_sign_in_android] /home/solo/Documents/projects/matt/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-67
+ADDED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml:6:5-66
+MERGED from [:google_sign_in_android] /home/solo/Documents/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-67
+MERGED from [:google_sign_in_android] /home/solo/Documents/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-67
 	android:name
-		ADDED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml:6:22-64
+		ADDED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml:6:22-64
 uses-sdk
-INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
-INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
-MERGED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
+INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
+MERGED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/solo/.gradle/caches/transforms-3/6efee829cec19414b5a84b01cbaaeffe/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /home/solo/.gradle/caches/transforms-3/6efee829cec19414b5a84b01cbaaeffe/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] /home/solo/.gradle/caches/transforms-3/a47a73cef347769015f693527f995a2f/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] /home/solo/.gradle/caches/transforms-3/a47a73cef347769015f693527f995a2f/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
-MERGED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:google_sign_in_android] /home/solo/Documents/projects/matt/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:google_sign_in_android] /home/solo/Documents/projects/matt/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:webview_flutter_android] /home/solo/Documents/projects/matt/dog_food/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
-MERGED from [:webview_flutter_android] /home/solo/Documents/projects/matt/dog_food/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in_android] /home/solo/Documents/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:google_sign_in_android] /home/solo/Documents/dog_food/build/google_sign_in_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] /home/solo/Documents/dog_food/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] /home/solo/Documents/dog_food/build/webview_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.webkit:webkit:1.12.0] /home/solo/.gradle/caches/transforms-3/2a56b7183ab6cf20fe63a3ca49e7811b/transformed/webkit-1.12.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.webkit:webkit:1.12.0] /home/solo/.gradle/caches/transforms-3/2a56b7183ab6cf20fe63a3ca49e7811b/transformed/webkit-1.12.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.browser:browser:1.8.0] /home/solo/.gradle/caches/transforms-3/7b043be59d5e08fc8e1af9bd04a36b48/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
@@ -213,83 +213,83 @@ MERGED from [androidx.window.extensions.core:core:1.0.0] /home/solo/.gradle/cach
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/solo/.gradle/caches/transforms-3/23570485ac622284e84b3d3601d194f1/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:5:5-43
 MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] /home/solo/.gradle/caches/transforms-3/23570485ac622284e84b3d3601d194f1/transformed/jetified-relinker-1.4.5/AndroidManifest.xml:5:5-43
 	android:targetSdkVersion
-		INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/solo/Documents/projects/matt/dog_food/android/app/src/debug/AndroidManifest.xml
+		INJECTED from /home/solo/Documents/dog_food/android/app/src/debug/AndroidManifest.xml
 intent#action:name:android.support.customtabs.action.CustomTabsService
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-10:18
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-10:18
 action#android.support.customtabs.action.CustomTabsService
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-90
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-90
 	android:name
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:21-87
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:21-87
 activity#com.pichillilorenzo.flutter_inappwebview_android.in_app_browser.InAppBrowserActivity
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-18:47
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-18:47
 	android:exported
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-37
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-37
 	android:configChanges
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-137
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-137
 	android:theme
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-44
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-44
 	android:name
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-112
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-112
 activity#com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.ChromeCustomTabsActivity
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-22:55
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:19:9-22:55
 	android:exported
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-37
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-37
 	android:theme
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-52
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-52
 	android:name
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-120
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-120
 activity#com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.TrustedWebActivity
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:23:9-26:55
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:23:9-26:55
 	android:exported
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-37
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-37
 	android:theme
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-52
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-52
 	android:name
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-114
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-114
 activity#com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.ChromeCustomTabsActivitySingleInstance
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:27:9-31:55
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:27:9-31:55
 	android:launchMode
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:30:13-48
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:30:13-48
 	android:exported
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-37
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-37
 	android:theme
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:31:13-52
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:31:13-52
 	android:name
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-134
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-134
 activity#com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.TrustedWebActivitySingleInstance
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:32:9-36:55
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:32:9-36:55
 	android:launchMode
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:35:13-48
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:35:13-48
 	android:exported
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:34:13-37
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:34:13-37
 	android:theme
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:36:13-52
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:36:13-52
 	android:name
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:33:13-128
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:33:13-128
 receiver#com.pichillilorenzo.flutter_inappwebview_android.chrome_custom_tabs.ActionBroadcastReceiver
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:38:9-41:40
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:38:9-41:40
 	android:enabled
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:40:13-35
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:40:13-35
 	android:exported
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:41:13-37
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:41:13-37
 	android:name
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:39:13-119
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:39:13-119
 meta-data#io.flutter.embedded_views_preview
-ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:43:9-45:36
+ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:43:9-45:36
 	android:value
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-33
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:45:13-33
 	android:name
-		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/projects/matt/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:44:13-61
+		ADDED from [:flutter_inappwebview_android] /home/solo/Documents/dog_food/build/flutter_inappwebview_android/intermediates/merged_manifest/debug/AndroidManifest.xml:44:13-61
 activity#io.flutter.plugins.urllauncher.WebViewActivity
-ADDED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-11:74
+ADDED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-11:74
 	android:exported
-		ADDED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-37
+		ADDED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-37
 	android:theme
-		ADDED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-71
+		ADDED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-71
 	android:name
-		ADDED from [:url_launcher_android] /home/solo/Documents/projects/matt/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-74
+		ADDED from [:url_launcher_android] /home/solo/Documents/dog_food/build/url_launcher_android/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-74
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.2.0] /home/solo/.gradle/caches/transforms-3/14b9b4b67c49a3b06f1f5d79b779b793/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
 	android:required
