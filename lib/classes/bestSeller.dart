@@ -18,8 +18,6 @@ class BestSellerWidget extends StatelessWidget {
       builder: (context, constraints) {
         final double cardWidth =
             isSmall ? MediaQuery.of(context).size.width * 0.8 : 300;
-        //isSmall ? constraints.maxWidth * 0.1 : constraints.maxWidth * 0.3;
-
         final double cardHeight = isSmall ? 400 : 400;
 
         return SingleChildScrollView(
@@ -51,9 +49,8 @@ class BestSellerWidget extends StatelessWidget {
               ),
               verticalMargin4,
               isSmall
-                  // carousel for phones
                   ? SizedBox(
-                      height: cardHeight + 40, // extra room for buttons/text
+                      height: cardHeight + 40,
                       child: PageView.builder(
                         itemCount: products.length,
                         controller: PageController(viewportFraction: 0.85),
@@ -69,7 +66,6 @@ class BestSellerWidget extends StatelessWidget {
                         ),
                       ),
                     )
-                  // grid-style wrap for web/tablet/large screens
                   : Wrap(
                       spacing: 16,
                       runSpacing: 16,
@@ -91,111 +87,117 @@ class BestSellerWidget extends StatelessWidget {
     );
   }
 
-  
   Widget _buildProductCard(
-  BuildContext context,
-  Product product,
-  CartProvider cartProvider,
-  double width,
-  double height,
-) {
-  final isSmall = ResponsiveHelper.isSmallScreen(context);
+    BuildContext context,
+    Product product,
+    CartProvider cartProvider,
+    double width,
+    double height,
+  ) {
+    final isSmall = ResponsiveHelper.isSmallScreen(context);
 
-  return MouseRegion(
-    cursor: SystemMouseCursors.click,
-    child: Card(
-      shadowColor: DogFoodAppTheme.menuBrownColor,
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: SizedBox(
-        width: width,
-        child: SingleChildScrollView(
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Card(
+        shadowColor: DogFoodAppTheme.menuBrownColor,
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: SizedBox(
+          width: width,
+          height: height, // Fixed height for consistent cards
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // 🐶 Image on top
-              AspectRatio(
-                aspectRatio: 1,
-                child: product.image.startsWith('http')
-                    ? Image.network(
-                        product.image,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            Container(color: Colors.grey),
-                      )
-                    : Image.asset(
-                        product.image,
-                        fit: BoxFit.cover,
-                      ),
-              ),
-          
-              // 📝 Product Info below image
-              Padding(
-                padding: allPadding8,
-                child: Column(
-                  children: [
-                    Text(
-                      product.description,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: isSmall ? 16 : 18,
-                            color: Colors.black,
-                          ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    verticalMargin2,
-                    Text(
-                      "Weight: ${product.weight}",
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontSize: isSmall ? 14 : 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                    ),
-                    verticalMargin2,
-                    Text(
-                      "Price: Ksh ${product.price.toStringAsFixed(2)}",
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                            color: DogFoodAppTheme.primaryButtonColor,
-                            fontSize: isSmall ? 14 : 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    verticalMargin2,
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          cartProvider.addToCart(product.toMap());
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text("Added to cart")),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: DogFoodAppTheme.primaryButtonColor,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24, vertical: 12),
+              // Image section with fixed aspect ratio
+              Expanded(
+                flex: 3,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: product.image.startsWith('http')
+                      ? Image.network(
+                          product.image,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) =>
+                              Container(color: Colors.grey),
+                        )
+                      : Image.asset(
+                          product.image,
+                          fit: BoxFit.cover,
                         ),
-                        child: const Text("Add to Cart"),
+                ),
+              ),
+
+              // Product info section with fixed height
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: allPadding8,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        product.description,
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: isSmall ? 16 : 18,
+                                  color: Colors.black,
+                                ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                  ],
+                      Text(
+                        "Weight: ${product.weight}",
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              fontSize: isSmall ? 14 : 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                      ),
+                      Text(
+                        "Price: Ksh ${product.price.toStringAsFixed(2)}",
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              color: DogFoodAppTheme.primaryButtonColor,
+                              fontSize: isSmall ? 14 : 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              cartProvider.addToCart(product.toMap());
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text("Added to cart")),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  DogFoodAppTheme.primaryButtonColor,
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            child: const Text("Add to Cart"),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
         ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 }
