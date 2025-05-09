@@ -78,35 +78,24 @@ class PageTopBar extends StatelessWidget {
                   ),
                 ),
               ),
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CheckoutScreen(),
-                    ),
-                  );
-                },
-                icon: Icon(Icons.shopping_cart)),
-
-            // ElevatedButton(
-            //   style: ElevatedButton.styleFrom(
-            //     padding: horizontalPadding24 + verticalPadding8,
-            //     backgroundColor: DogFoodAppTheme.primaryButtonColor,
-            //     shape: RoundedRectangleBorder(
-            //       borderRadius: BorderRadius.circular(10),
-            //     ),
-            //   ),
-            //   onPressed: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => const CheckoutScreen(),
-            //       ),
-            //     );
-            //   },
-            //   child: const Text("cart"),
-            // ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: horizontalPadding24 + verticalPadding8,
+                backgroundColor: DogFoodAppTheme.primaryButtonColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CheckoutScreen(),
+                  ),
+                );
+              },
+              child: const Text("cart"),
+            ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.05),
             Padding(
               padding: allPadding8,
